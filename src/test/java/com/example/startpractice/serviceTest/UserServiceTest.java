@@ -77,5 +77,10 @@ public class UserServiceTest {
         assertEquals(1, result);
     }
 
+    @Test
+    void gitTest() {
+        System.out.println("hello js");
+    }
+
 
 }
