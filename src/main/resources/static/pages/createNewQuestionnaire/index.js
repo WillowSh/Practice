@@ -53,8 +53,10 @@ const handleCreateQNR = () => {
     contentType: "application/json",
     success() {
       alert('创建成功！')
+      location.href = `/pages/designQuestionnaire/index.html`;
     }
   })
+  console.log("???");
   console.log("^_^");
 }
 
