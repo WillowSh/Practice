@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class QNRService {
@@ -19,6 +20,13 @@ public class QNRService {
         qnrEntity.setCreationDate(new Date());
 
         int result= qnrEntityMapper.insert(qnrEntity);
+        return result;
+    }
+
+    //查询项目列表
+    public List<QNREntity> queryQNRList(QNREntity qnrEntity){
+
+        List<QNREntity> result=qnrEntityMapper.queryQNRList(qnrEntity);
         return result;
     }
 

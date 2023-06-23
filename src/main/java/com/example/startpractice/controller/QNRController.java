@@ -4,9 +4,12 @@ import com.example.startpractice.beans.HttpResponseEntity;
 import com.example.startpractice.dao.entity.QNREntity;
 import com.example.startpractice.service.QNRService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class QNRController {
@@ -28,7 +31,29 @@ public class QNRController {
                 httpResponseEntity.setData(0);
                 httpResponseEntity.setMessage("创建失败");
             }
-            System.out.println(qnrEntity.toString());
+            System.out.println(qnrEntity);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return httpResponseEntity;
+    }
+
+    @PostMapping(value = "/queryQNRList",headers = "Accept=application/json")
+    public HttpResponseEntity queryQNRList(@RequestBody QNREntity qnrEntity){
+
+        HttpResponseEntity httpResponseEntity=new HttpResponseEntity();
+        try {
+            List<QNREntity> hasQNR=qnrService.queryQNRList(qnrEntity);
+            if(CollectionUtils.isEmpty(hasQNR)){
+                httpResponseEntity.setCode("0");
+                httpResponseEntity.setData(hasQNR);
+                httpResponseEntity.setMessage("无项目信息");
+            }else {
+                httpResponseEntity.setCode("666");
+                httpResponseEntity.setData(hasQNR);
+                httpResponseEntity.setMessage("查询成功");
+            }
         }catch (Exception e){
             System.out.println(e.getMessage());
             e.printStackTrace();

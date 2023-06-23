@@ -56,7 +56,6 @@ const handleCreateQNR = () => {
       location.href = `/pages/designQuestionnaire/index.html`;
     }
   })
-  console.log("???");
   console.log("^_^");
 }
 
