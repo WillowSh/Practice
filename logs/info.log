@@ -1,0 +1,399 @@
+2023-06-23T00:10:45.949+08:00  INFO 23184 --- [main] c.e.s.StartPracticeApplication           : Starting StartPracticeApplication using Java 17.0.2 with PID 23184 (C:\demos\demo3\startPractice\target\classes started by Shenjiang in C:\demos\demo3\startPractice)
+2023-06-23T00:10:45.963+08:00  INFO 23184 --- [main] c.e.s.StartPracticeApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-06-23T00:10:47.226+08:00  INFO 23184 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-06-23T00:10:47.227+08:00  INFO 23184 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.36] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.1]
+2023-06-23T00:10:47.228+08:00  INFO 23184 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.36] using APR version [1.7.2].
+2023-06-23T00:10:47.230+08:00  INFO 23184 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1t  7 Feb 2023]
+2023-06-23T00:10:47.238+08:00  INFO 23184 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-23T00:10:47.239+08:00  INFO 23184 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-23T00:10:47.316+08:00  INFO 23184 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-23T00:10:47.316+08:00  INFO 23184 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1272 ms
+2023-06-23T00:10:47.732+08:00  INFO 23184 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-06-23T00:10:47.898+08:00  INFO 23184 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-06-23T00:10:47.906+08:00  INFO 23184 --- [main] c.e.s.StartPracticeApplication           : Started StartPracticeApplication in 2.812 seconds (process running for 3.785)
+2023-06-23T00:11:02.124+08:00  INFO 23184 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-23T00:11:02.124+08:00  INFO 23184 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-23T00:11:02.125+08:00  INFO 23184 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-06-23T00:11:02.215+08:00  INFO 23184 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-23T00:11:02.519+08:00  INFO 23184 --- [http-nio-8081-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@781dc7df
+2023-06-23T00:11:02.522+08:00  INFO 23184 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-23T00:12:25.078+08:00  INFO 23184 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-23T00:12:25.086+08:00  INFO 23184 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-23T00:20:22.134+08:00  INFO 21316 --- [main] c.e.s.StartPracticeApplication           : Starting StartPracticeApplication using Java 17.0.2 with PID 21316 (C:\demos\demo3\startPractice\target\classes started by Shenjiang in C:\demos\demo3\startPractice)
+2023-06-23T00:20:22.138+08:00  INFO 21316 --- [main] c.e.s.StartPracticeApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-06-23T00:20:23.174+08:00  INFO 21316 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-06-23T00:20:23.175+08:00  INFO 21316 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.36] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.1]
+2023-06-23T00:20:23.175+08:00  INFO 21316 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.36] using APR version [1.7.2].
+2023-06-23T00:20:23.178+08:00  INFO 21316 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1t  7 Feb 2023]
+2023-06-23T00:20:23.187+08:00  INFO 21316 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-23T00:20:23.187+08:00  INFO 21316 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-23T00:20:23.265+08:00  INFO 21316 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-23T00:20:23.266+08:00  INFO 21316 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1045 ms
+2023-06-23T00:20:23.677+08:00  INFO 21316 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-06-23T00:20:23.820+08:00  INFO 21316 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-06-23T00:20:23.831+08:00  INFO 21316 --- [main] c.e.s.StartPracticeApplication           : Started StartPracticeApplication in 2.531 seconds (process running for 3.624)
+2023-06-23T00:20:38.590+08:00  INFO 21316 --- [http-nio-8081-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-23T00:20:38.591+08:00  INFO 21316 --- [http-nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-23T00:20:38.592+08:00  INFO 21316 --- [http-nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-06-23T00:20:38.678+08:00  INFO 21316 --- [http-nio-8081-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-23T00:20:38.970+08:00  INFO 21316 --- [http-nio-8081-exec-2] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@10cdaf22
+2023-06-23T00:20:38.972+08:00  INFO 21316 --- [http-nio-8081-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-23T00:23:42.202+08:00  INFO 21316 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-23T00:23:42.210+08:00  INFO 21316 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-23T00:24:30.417+08:00  INFO 13780 --- [main] c.e.s.StartPracticeApplication           : Starting StartPracticeApplication using Java 17.0.2 with PID 13780 (C:\demos\demo3\startPractice\target\classes started by Shenjiang in C:\demos\demo3\startPractice)
+2023-06-23T00:24:30.420+08:00  INFO 13780 --- [main] c.e.s.StartPracticeApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-06-23T00:24:31.936+08:00  INFO 13780 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-06-23T00:24:31.937+08:00  INFO 13780 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.36] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.1]
+2023-06-23T00:24:31.938+08:00  INFO 13780 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.36] using APR version [1.7.2].
+2023-06-23T00:24:31.941+08:00  INFO 13780 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1t  7 Feb 2023]
+2023-06-23T00:24:31.954+08:00  INFO 13780 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-23T00:24:31.955+08:00  INFO 13780 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-23T00:24:32.068+08:00  INFO 13780 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-23T00:24:32.069+08:00  INFO 13780 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1602 ms
+2023-06-23T00:24:32.574+08:00  INFO 13780 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-06-23T00:24:32.764+08:00  INFO 13780 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-06-23T00:24:32.774+08:00  INFO 13780 --- [main] c.e.s.StartPracticeApplication           : Started StartPracticeApplication in 2.78 seconds (process running for 3.546)
+2023-06-23T00:24:45.649+08:00  INFO 13780 --- [http-nio-8081-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-23T00:24:45.649+08:00  INFO 13780 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-23T00:24:45.650+08:00  INFO 13780 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2023-06-23T00:24:45.724+08:00  INFO 13780 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-23T00:24:46.005+08:00  INFO 13780 --- [http-nio-8081-exec-3] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@78ded377
+2023-06-23T00:24:46.007+08:00  INFO 13780 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-23T00:26:17.867+08:00  INFO 13780 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-23T00:26:17.875+08:00  INFO 13780 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-23T00:26:42.820+08:00  INFO 8984 --- [main] c.e.s.StartPracticeApplication           : Starting StartPracticeApplication using Java 17.0.2 with PID 8984 (C:\demos\demo3\startPractice\target\classes started by Shenjiang in C:\demos\demo3\startPractice)
+2023-06-23T00:26:42.825+08:00  INFO 8984 --- [main] c.e.s.StartPracticeApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-06-23T00:26:44.555+08:00  INFO 8984 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-06-23T00:26:44.556+08:00  INFO 8984 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.36] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.1]
+2023-06-23T00:26:44.557+08:00  INFO 8984 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.36] using APR version [1.7.2].
+2023-06-23T00:26:44.559+08:00  INFO 8984 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1t  7 Feb 2023]
+2023-06-23T00:26:44.567+08:00  INFO 8984 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-23T00:26:44.568+08:00  INFO 8984 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-23T00:26:44.660+08:00  INFO 8984 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-23T00:26:44.660+08:00  INFO 8984 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1747 ms
+2023-06-23T00:26:45.048+08:00  INFO 8984 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-06-23T00:26:45.236+08:00  INFO 8984 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-06-23T00:26:45.257+08:00  INFO 8984 --- [main] c.e.s.StartPracticeApplication           : Started StartPracticeApplication in 3.217 seconds (process running for 4.169)
+2023-06-23T00:27:00.427+08:00  INFO 8984 --- [http-nio-8081-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-23T00:27:00.427+08:00  INFO 8984 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-23T00:27:00.428+08:00  INFO 8984 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-06-23T00:27:00.497+08:00  INFO 8984 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-23T00:27:00.701+08:00  INFO 8984 --- [http-nio-8081-exec-3] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5a842930
+2023-06-23T00:27:00.703+08:00  INFO 8984 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-23T00:27:32.882+08:00  INFO 8984 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-23T00:27:32.893+08:00  INFO 8984 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-23T00:27:36.334+08:00  INFO 6968 --- [main] c.e.s.StartPracticeApplication           : Starting StartPracticeApplication using Java 17.0.2 with PID 6968 (C:\demos\demo3\startPractice\target\classes started by Shenjiang in C:\demos\demo3\startPractice)
+2023-06-23T00:27:36.337+08:00  INFO 6968 --- [main] c.e.s.StartPracticeApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-06-23T00:27:37.305+08:00  INFO 6968 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-06-23T00:27:37.306+08:00  INFO 6968 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.36] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.1]
+2023-06-23T00:27:37.306+08:00  INFO 6968 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.36] using APR version [1.7.2].
+2023-06-23T00:27:37.309+08:00  INFO 6968 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1t  7 Feb 2023]
+2023-06-23T00:27:37.317+08:00  INFO 6968 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-23T00:27:37.318+08:00  INFO 6968 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-23T00:27:37.401+08:00  INFO 6968 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-23T00:27:37.402+08:00  INFO 6968 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1015 ms
+2023-06-23T00:27:38.276+08:00  INFO 6968 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-06-23T00:27:38.478+08:00  INFO 6968 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-06-23T00:27:38.492+08:00  INFO 6968 --- [main] c.e.s.StartPracticeApplication           : Started StartPracticeApplication in 2.623 seconds (process running for 3.344)
+2023-06-23T00:27:41.465+08:00  INFO 6968 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-23T00:27:41.465+08:00  INFO 6968 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-23T00:27:41.466+08:00  INFO 6968 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-06-23T00:28:02.703+08:00  INFO 6968 --- [http-nio-8081-exec-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-23T00:28:02.916+08:00  INFO 6968 --- [http-nio-8081-exec-5] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4d33e359
+2023-06-23T00:28:02.918+08:00  INFO 6968 --- [http-nio-8081-exec-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-23T00:28:29.443+08:00  INFO 6968 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-23T00:28:29.450+08:00  INFO 6968 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-23T00:29:16.216+08:00  INFO 1028 --- [main] c.e.s.StartPracticeApplication           : Starting StartPracticeApplication using Java 17.0.2 with PID 1028 (C:\demos\demo3\startPractice\target\classes started by Shenjiang in C:\demos\demo3\startPractice)
+2023-06-23T00:29:16.222+08:00  INFO 1028 --- [main] c.e.s.StartPracticeApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-06-23T00:29:17.778+08:00  INFO 1028 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-06-23T00:29:17.778+08:00  INFO 1028 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.36] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.1]
+2023-06-23T00:29:17.779+08:00  INFO 1028 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.36] using APR version [1.7.2].
+2023-06-23T00:29:17.781+08:00  INFO 1028 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1t  7 Feb 2023]
+2023-06-23T00:29:17.787+08:00  INFO 1028 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-23T00:29:17.787+08:00  INFO 1028 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-23T00:29:17.856+08:00  INFO 1028 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-23T00:29:17.857+08:00  INFO 1028 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1561 ms
+2023-06-23T00:29:18.349+08:00  INFO 1028 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-06-23T00:29:18.630+08:00  INFO 1028 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-06-23T00:29:18.643+08:00  INFO 1028 --- [main] c.e.s.StartPracticeApplication           : Started StartPracticeApplication in 3.211 seconds (process running for 4.682)
+2023-06-23T00:29:30.945+08:00  INFO 1028 --- [http-nio-8081-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-23T00:29:30.946+08:00  INFO 1028 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-23T00:29:30.947+08:00  INFO 1028 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-06-23T00:29:31.017+08:00  INFO 1028 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-23T00:29:31.223+08:00  INFO 1028 --- [http-nio-8081-exec-3] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@55889a50
+2023-06-23T00:29:31.224+08:00  INFO 1028 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-23T00:33:07.946+08:00  INFO 1028 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-23T00:33:07.954+08:00  INFO 1028 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-23T00:37:07.210+08:00  INFO 21500 --- [main] c.e.s.StartPracticeApplication           : Starting StartPracticeApplication using Java 17.0.2 with PID 21500 (C:\demos\demo3\startPractice\target\classes started by Shenjiang in C:\demos\demo3\startPractice)
+2023-06-23T00:37:07.214+08:00  INFO 21500 --- [main] c.e.s.StartPracticeApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-06-23T00:37:08.389+08:00  INFO 21500 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-06-23T00:37:08.389+08:00  INFO 21500 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.36] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.1]
+2023-06-23T00:37:08.390+08:00  INFO 21500 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.36] using APR version [1.7.2].
+2023-06-23T00:37:08.392+08:00  INFO 21500 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1t  7 Feb 2023]
+2023-06-23T00:37:08.399+08:00  INFO 21500 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-23T00:37:08.400+08:00  INFO 21500 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-23T00:37:08.522+08:00  INFO 21500 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-23T00:37:08.523+08:00  INFO 21500 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1234 ms
+2023-06-23T00:37:09.001+08:00  INFO 21500 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-06-23T00:37:09.415+08:00  INFO 21500 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-06-23T00:37:09.436+08:00  INFO 21500 --- [main] c.e.s.StartPracticeApplication           : Started StartPracticeApplication in 2.804 seconds (process running for 3.417)
+2023-06-23T00:37:21.789+08:00  INFO 21500 --- [http-nio-8081-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-23T00:37:21.790+08:00  INFO 21500 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-23T00:37:21.791+08:00  INFO 21500 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-06-23T00:37:21.859+08:00  INFO 21500 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-23T00:37:22.064+08:00  INFO 21500 --- [http-nio-8081-exec-3] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@44616f2c
+2023-06-23T00:37:22.066+08:00  INFO 21500 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-23T00:37:47.691+08:00  INFO 21500 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-23T00:37:47.700+08:00  INFO 21500 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-23T00:41:21.654+08:00  INFO 14524 --- [main] c.e.s.StartPracticeApplication           : Starting StartPracticeApplication using Java 17.0.2 with PID 14524 (C:\demos\demo3\startPractice\target\classes started by Shenjiang in C:\demos\demo3\startPractice)
+2023-06-23T00:41:21.659+08:00  INFO 14524 --- [main] c.e.s.StartPracticeApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-06-23T00:41:22.726+08:00  INFO 14524 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-06-23T00:41:22.727+08:00  INFO 14524 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.36] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.1]
+2023-06-23T00:41:22.727+08:00  INFO 14524 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.36] using APR version [1.7.2].
+2023-06-23T00:41:22.730+08:00  INFO 14524 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1t  7 Feb 2023]
+2023-06-23T00:41:22.737+08:00  INFO 14524 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-23T00:41:22.737+08:00  INFO 14524 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-23T00:41:22.819+08:00  INFO 14524 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-23T00:41:22.820+08:00  INFO 14524 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1075 ms
+2023-06-23T00:41:23.187+08:00  INFO 14524 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-06-23T00:41:23.327+08:00  INFO 14524 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-06-23T00:41:23.335+08:00  INFO 14524 --- [main] c.e.s.StartPracticeApplication           : Started StartPracticeApplication in 2.396 seconds (process running for 3.418)
+2023-06-23T00:41:42.329+08:00  INFO 14524 --- [http-nio-8081-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-23T00:41:42.330+08:00  INFO 14524 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-23T00:41:42.331+08:00  INFO 14524 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-06-23T00:41:42.402+08:00  INFO 14524 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-23T00:41:42.612+08:00  INFO 14524 --- [http-nio-8081-exec-3] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5a842930
+2023-06-23T00:41:42.614+08:00  INFO 14524 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-23T00:41:57.082+08:00  INFO 14524 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-23T00:41:57.090+08:00  INFO 14524 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-23T00:47:33.031+08:00  INFO 21616 --- [main] c.e.s.StartPracticeApplication           : Starting StartPracticeApplication using Java 17.0.2 with PID 21616 (C:\demos\demo3\startPractice\target\classes started by Shenjiang in C:\demos\demo3\startPractice)
+2023-06-23T00:47:33.035+08:00  INFO 21616 --- [main] c.e.s.StartPracticeApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-06-23T00:47:34.134+08:00  INFO 21616 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-06-23T00:47:34.135+08:00  INFO 21616 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.36] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.1]
+2023-06-23T00:47:34.136+08:00  INFO 21616 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.36] using APR version [1.7.2].
+2023-06-23T00:47:34.161+08:00  INFO 21616 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1t  7 Feb 2023]
+2023-06-23T00:47:34.177+08:00  INFO 21616 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-23T00:47:34.178+08:00  INFO 21616 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-23T00:47:34.301+08:00  INFO 21616 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-23T00:47:34.302+08:00  INFO 21616 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1183 ms
+2023-06-23T00:47:34.869+08:00  INFO 21616 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-06-23T00:47:35.092+08:00  INFO 21616 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-06-23T00:47:35.111+08:00  INFO 21616 --- [main] c.e.s.StartPracticeApplication           : Started StartPracticeApplication in 3.102 seconds (process running for 4.127)
+2023-06-23T00:47:49.055+08:00  INFO 21616 --- [http-nio-8081-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-23T00:47:49.056+08:00  INFO 21616 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-23T00:47:49.057+08:00  INFO 21616 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-06-23T00:47:49.135+08:00  INFO 21616 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-23T00:47:49.426+08:00  INFO 21616 --- [http-nio-8081-exec-3] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5a842930
+2023-06-23T00:47:49.428+08:00  INFO 21616 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-23T00:48:28.681+08:00  INFO 21616 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-23T00:48:28.690+08:00  INFO 21616 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-23T00:55:16.740+08:00  INFO 4696 --- [main] c.e.s.StartPracticeApplication           : Starting StartPracticeApplication using Java 17.0.2 with PID 4696 (C:\demos\demo3\startPractice\target\classes started by Shenjiang in C:\demos\demo3\startPractice)
+2023-06-23T00:55:16.747+08:00  INFO 4696 --- [main] c.e.s.StartPracticeApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-06-23T00:55:18.141+08:00  INFO 4696 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-06-23T00:55:18.141+08:00  INFO 4696 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.36] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.1]
+2023-06-23T00:55:18.142+08:00  INFO 4696 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.36] using APR version [1.7.2].
+2023-06-23T00:55:18.144+08:00  INFO 4696 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1t  7 Feb 2023]
+2023-06-23T00:55:18.150+08:00  INFO 4696 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-23T00:55:18.151+08:00  INFO 4696 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-23T00:55:18.233+08:00  INFO 4696 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-23T00:55:18.234+08:00  INFO 4696 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1371 ms
+2023-06-23T00:55:18.616+08:00  INFO 4696 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-06-23T00:55:18.756+08:00  INFO 4696 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-06-23T00:55:18.764+08:00  INFO 4696 --- [main] c.e.s.StartPracticeApplication           : Started StartPracticeApplication in 2.817 seconds (process running for 3.774)
+2023-06-23T00:55:39.859+08:00  INFO 4696 --- [http-nio-8081-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-23T00:55:39.859+08:00  INFO 4696 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-23T00:55:39.860+08:00  INFO 4696 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-06-23T00:55:39.950+08:00  INFO 4696 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-23T00:55:40.254+08:00  INFO 4696 --- [http-nio-8081-exec-3] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5a842930
+2023-06-23T00:55:40.257+08:00  INFO 4696 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-23T00:57:04.824+08:00  INFO 4696 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-23T00:57:04.836+08:00  INFO 4696 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-23T00:57:08.995+08:00  INFO 20608 --- [main] c.e.s.StartPracticeApplication           : Starting StartPracticeApplication using Java 17.0.2 with PID 20608 (C:\demos\demo3\startPractice\target\classes started by Shenjiang in C:\demos\demo3\startPractice)
+2023-06-23T00:57:08.998+08:00  INFO 20608 --- [main] c.e.s.StartPracticeApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-06-23T00:57:09.925+08:00  INFO 20608 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-06-23T00:57:09.926+08:00  INFO 20608 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.36] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.1]
+2023-06-23T00:57:09.926+08:00  INFO 20608 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.36] using APR version [1.7.2].
+2023-06-23T00:57:09.929+08:00  INFO 20608 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1t  7 Feb 2023]
+2023-06-23T00:57:09.936+08:00  INFO 20608 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-23T00:57:09.936+08:00  INFO 20608 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-23T00:57:10.010+08:00  INFO 20608 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-23T00:57:10.010+08:00  INFO 20608 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 947 ms
+2023-06-23T00:57:10.507+08:00  INFO 20608 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-06-23T00:57:10.676+08:00  INFO 20608 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-06-23T00:57:10.686+08:00  INFO 20608 --- [main] c.e.s.StartPracticeApplication           : Started StartPracticeApplication in 2.28 seconds (process running for 3.082)
+2023-06-23T00:57:28.794+08:00  INFO 20608 --- [http-nio-8081-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-23T00:57:28.795+08:00  INFO 20608 --- [http-nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-23T00:57:28.797+08:00  INFO 20608 --- [http-nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2023-06-23T00:57:28.877+08:00  INFO 20608 --- [http-nio-8081-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-23T00:57:29.137+08:00  INFO 20608 --- [http-nio-8081-exec-2] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@797ba06e
+2023-06-23T00:57:29.139+08:00  INFO 20608 --- [http-nio-8081-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-23T00:58:51.880+08:00  INFO 20608 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-23T00:58:51.887+08:00  INFO 20608 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-23T01:03:40.596+08:00  INFO 22424 --- [main] c.e.s.StartPracticeApplication           : Starting StartPracticeApplication using Java 17.0.2 with PID 22424 (C:\demos\demo3\startPractice\target\classes started by Shenjiang in C:\demos\demo3\startPractice)
+2023-06-23T01:03:40.603+08:00  INFO 22424 --- [main] c.e.s.StartPracticeApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-06-23T01:03:41.754+08:00  INFO 22424 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-06-23T01:03:41.755+08:00  INFO 22424 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.36] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.1]
+2023-06-23T01:03:41.755+08:00  INFO 22424 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.36] using APR version [1.7.2].
+2023-06-23T01:03:41.757+08:00  INFO 22424 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1t  7 Feb 2023]
+2023-06-23T01:03:41.764+08:00  INFO 22424 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-23T01:03:41.764+08:00  INFO 22424 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-23T01:03:41.899+08:00  INFO 22424 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-23T01:03:41.899+08:00  INFO 22424 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1185 ms
+2023-06-23T01:03:42.281+08:00  INFO 22424 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-06-23T01:03:42.455+08:00  INFO 22424 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-06-23T01:03:42.464+08:00  INFO 22424 --- [main] c.e.s.StartPracticeApplication           : Started StartPracticeApplication in 2.839 seconds (process running for 4.271)
+2023-06-23T01:04:00.690+08:00  INFO 22424 --- [http-nio-8081-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-23T01:04:00.690+08:00  INFO 22424 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-23T01:04:00.691+08:00  INFO 22424 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2023-06-23T01:04:00.762+08:00  INFO 22424 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-23T01:04:00.968+08:00  INFO 22424 --- [http-nio-8081-exec-3] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@78ded377
+2023-06-23T01:04:00.969+08:00  INFO 22424 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-23T01:04:52.224+08:00  INFO 22424 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-23T01:04:52.231+08:00  INFO 22424 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-23T01:07:32.038+08:00  INFO 8232 --- [main] c.e.s.StartPracticeApplication           : Starting StartPracticeApplication using Java 17.0.2 with PID 8232 (C:\demos\demo3\startPractice\target\classes started by Shenjiang in C:\demos\demo3\startPractice)
+2023-06-23T01:07:32.041+08:00  INFO 8232 --- [main] c.e.s.StartPracticeApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-06-23T01:07:32.887+08:00  INFO 8232 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-06-23T01:07:32.887+08:00  INFO 8232 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.36] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.1]
+2023-06-23T01:07:32.888+08:00  INFO 8232 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.36] using APR version [1.7.2].
+2023-06-23T01:07:32.890+08:00  INFO 8232 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1t  7 Feb 2023]
+2023-06-23T01:07:32.897+08:00  INFO 8232 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-23T01:07:32.897+08:00  INFO 8232 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-23T01:07:32.972+08:00  INFO 8232 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-23T01:07:32.973+08:00  INFO 8232 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 860 ms
+2023-06-23T01:07:33.342+08:00  INFO 8232 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-06-23T01:07:33.476+08:00  INFO 8232 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-06-23T01:07:33.485+08:00  INFO 8232 --- [main] c.e.s.StartPracticeApplication           : Started StartPracticeApplication in 1.99 seconds (process running for 2.624)
+2023-06-23T01:07:57.459+08:00  INFO 8232 --- [http-nio-8081-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-23T01:07:57.460+08:00  INFO 8232 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-23T01:07:57.460+08:00  INFO 8232 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2023-06-23T01:07:57.537+08:00  INFO 8232 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-23T01:07:57.786+08:00  INFO 8232 --- [http-nio-8081-exec-3] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@78ded377
+2023-06-23T01:07:57.788+08:00  INFO 8232 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-23T01:08:51.896+08:00  INFO 8232 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-23T01:08:51.904+08:00  INFO 8232 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-23T01:09:11.966+08:00  INFO 17744 --- [main] c.e.s.StartPracticeApplication           : Starting StartPracticeApplication using Java 17.0.2 with PID 17744 (C:\demos\demo3\startPractice\target\classes started by Shenjiang in C:\demos\demo3\startPractice)
+2023-06-23T01:09:11.977+08:00  INFO 17744 --- [main] c.e.s.StartPracticeApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-06-23T01:09:12.883+08:00  INFO 17744 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-06-23T01:09:12.884+08:00  INFO 17744 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.36] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.1]
+2023-06-23T01:09:12.885+08:00  INFO 17744 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.36] using APR version [1.7.2].
+2023-06-23T01:09:12.887+08:00  INFO 17744 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1t  7 Feb 2023]
+2023-06-23T01:09:12.893+08:00  INFO 17744 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-23T01:09:12.893+08:00  INFO 17744 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-23T01:09:12.962+08:00  INFO 17744 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-23T01:09:12.962+08:00  INFO 17744 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 923 ms
+2023-06-23T01:09:13.377+08:00  INFO 17744 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-06-23T01:09:13.507+08:00  INFO 17744 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-06-23T01:09:13.514+08:00  INFO 17744 --- [main] c.e.s.StartPracticeApplication           : Started StartPracticeApplication in 2.341 seconds (process running for 3.429)
+2023-06-23T01:09:27.880+08:00  INFO 17744 --- [http-nio-8081-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-23T01:09:27.881+08:00  INFO 17744 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-23T01:09:27.882+08:00  INFO 17744 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-06-23T01:09:27.952+08:00  INFO 17744 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-23T01:09:28.148+08:00  INFO 17744 --- [http-nio-8081-exec-3] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5a842930
+2023-06-23T01:09:28.149+08:00  INFO 17744 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-23T01:09:46.908+08:00  INFO 17744 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-23T01:09:46.916+08:00  INFO 17744 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-23T01:12:53.824+08:00  INFO 17992 --- [main] c.e.s.StartPracticeApplication           : Starting StartPracticeApplication using Java 17.0.2 with PID 17992 (C:\demos\demo3\startPractice\target\classes started by Shenjiang in C:\demos\demo3\startPractice)
+2023-06-23T01:12:53.831+08:00  INFO 17992 --- [main] c.e.s.StartPracticeApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-06-23T01:12:55.131+08:00  INFO 17992 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-06-23T01:12:55.132+08:00  INFO 17992 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.36] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.1]
+2023-06-23T01:12:55.133+08:00  INFO 17992 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.36] using APR version [1.7.2].
+2023-06-23T01:12:55.135+08:00  INFO 17992 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1t  7 Feb 2023]
+2023-06-23T01:12:55.145+08:00  INFO 17992 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-23T01:12:55.146+08:00  INFO 17992 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-23T01:12:55.285+08:00  INFO 17992 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-23T01:12:55.286+08:00  INFO 17992 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1359 ms
+2023-06-23T01:12:55.779+08:00  INFO 17992 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-06-23T01:12:55.935+08:00  INFO 17992 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-06-23T01:12:55.945+08:00  INFO 17992 --- [main] c.e.s.StartPracticeApplication           : Started StartPracticeApplication in 3.227 seconds (process running for 4.014)
+2023-06-23T01:13:07.380+08:00  INFO 17992 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-23T01:13:07.380+08:00  INFO 17992 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-23T01:13:07.381+08:00  INFO 17992 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2023-06-23T01:13:07.455+08:00  INFO 17992 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-23T01:13:07.656+08:00  INFO 17992 --- [http-nio-8081-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4edd1b19
+2023-06-23T01:13:07.658+08:00  INFO 17992 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-23T01:19:56.433+08:00  INFO 17992 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-23T01:19:56.444+08:00  INFO 17992 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-23T01:20:00.031+08:00  INFO 21144 --- [main] c.e.s.StartPracticeApplication           : Starting StartPracticeApplication using Java 17.0.2 with PID 21144 (C:\demos\demo3\startPractice\target\classes started by Shenjiang in C:\demos\demo3\startPractice)
+2023-06-23T01:20:00.035+08:00  INFO 21144 --- [main] c.e.s.StartPracticeApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-06-23T01:20:00.966+08:00  INFO 21144 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-06-23T01:20:00.968+08:00  INFO 21144 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.36] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.1]
+2023-06-23T01:20:00.968+08:00  INFO 21144 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.36] using APR version [1.7.2].
+2023-06-23T01:20:00.970+08:00  INFO 21144 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1t  7 Feb 2023]
+2023-06-23T01:20:00.976+08:00  INFO 21144 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-23T01:20:00.977+08:00  INFO 21144 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-23T01:20:01.046+08:00  INFO 21144 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-23T01:20:01.047+08:00  INFO 21144 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 949 ms
+2023-06-23T01:20:01.500+08:00  INFO 21144 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-06-23T01:20:01.784+08:00  INFO 21144 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-06-23T01:20:01.793+08:00  INFO 21144 --- [main] c.e.s.StartPracticeApplication           : Started StartPracticeApplication in 2.385 seconds (process running for 3.118)
+2023-06-23T01:20:21.921+08:00  INFO 21144 --- [http-nio-8081-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-23T01:20:21.922+08:00  INFO 21144 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-23T01:20:21.923+08:00  INFO 21144 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-06-23T01:20:21.999+08:00  INFO 21144 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-23T01:20:22.287+08:00  INFO 21144 --- [http-nio-8081-exec-3] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@78ded377
+2023-06-23T01:20:22.289+08:00  INFO 21144 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-23T01:20:46.251+08:00  INFO 21144 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-23T01:20:46.260+08:00  INFO 21144 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-23T01:23:44.558+08:00  INFO 8896 --- [main] c.e.s.StartPracticeApplication           : Starting StartPracticeApplication using Java 17.0.2 with PID 8896 (C:\demos\demo3\startPractice\target\classes started by Shenjiang in C:\demos\demo3\startPractice)
+2023-06-23T01:23:44.563+08:00  INFO 8896 --- [main] c.e.s.StartPracticeApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-06-23T01:23:45.309+08:00  INFO 8896 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-06-23T01:23:45.310+08:00  INFO 8896 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.36] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.1]
+2023-06-23T01:23:45.310+08:00  INFO 8896 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.36] using APR version [1.7.2].
+2023-06-23T01:23:45.312+08:00  INFO 8896 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1t  7 Feb 2023]
+2023-06-23T01:23:45.318+08:00  INFO 8896 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-23T01:23:45.319+08:00  INFO 8896 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-23T01:23:45.389+08:00  INFO 8896 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-23T01:23:45.390+08:00  INFO 8896 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 773 ms
+2023-06-23T01:23:45.722+08:00  INFO 8896 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-06-23T01:23:45.851+08:00  INFO 8896 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-06-23T01:23:45.859+08:00  INFO 8896 --- [main] c.e.s.StartPracticeApplication           : Started StartPracticeApplication in 1.803 seconds (process running for 2.451)
+2023-06-23T01:24:02.606+08:00  INFO 8896 --- [http-nio-8081-exec-5] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-23T01:24:02.606+08:00  INFO 8896 --- [http-nio-8081-exec-5] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-23T01:24:02.607+08:00  INFO 8896 --- [http-nio-8081-exec-5] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-06-23T01:24:02.675+08:00  INFO 8896 --- [http-nio-8081-exec-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-23T01:24:02.878+08:00  INFO 8896 --- [http-nio-8081-exec-5] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@78ded377
+2023-06-23T01:24:02.880+08:00  INFO 8896 --- [http-nio-8081-exec-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-23T01:24:44.358+08:00  INFO 8896 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-23T01:24:44.368+08:00  INFO 8896 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-23T01:24:47.243+08:00  INFO 4032 --- [main] c.e.s.StartPracticeApplication           : Starting StartPracticeApplication using Java 17.0.2 with PID 4032 (C:\demos\demo3\startPractice\target\classes started by Shenjiang in C:\demos\demo3\startPractice)
+2023-06-23T01:24:47.247+08:00  INFO 4032 --- [main] c.e.s.StartPracticeApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-06-23T01:24:48.099+08:00  INFO 4032 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-06-23T01:24:48.099+08:00  INFO 4032 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.36] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.1]
+2023-06-23T01:24:48.100+08:00  INFO 4032 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.36] using APR version [1.7.2].
+2023-06-23T01:24:48.102+08:00  INFO 4032 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1t  7 Feb 2023]
+2023-06-23T01:24:48.109+08:00  INFO 4032 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-23T01:24:48.109+08:00  INFO 4032 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-23T01:24:48.187+08:00  INFO 4032 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-23T01:24:48.187+08:00  INFO 4032 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 869 ms
+2023-06-23T01:24:48.527+08:00  INFO 4032 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-06-23T01:24:48.666+08:00  INFO 4032 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-06-23T01:24:48.674+08:00  INFO 4032 --- [main] c.e.s.StartPracticeApplication           : Started StartPracticeApplication in 1.895 seconds (process running for 2.582)
+2023-06-23T01:25:05.742+08:00  INFO 4032 --- [http-nio-8081-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-23T01:25:05.742+08:00  INFO 4032 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-23T01:25:05.743+08:00  INFO 4032 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2023-06-23T01:25:05.853+08:00  INFO 4032 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-23T01:25:06.107+08:00  INFO 4032 --- [http-nio-8081-exec-3] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@78ded377
+2023-06-23T01:25:06.110+08:00  INFO 4032 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-23T01:25:20.002+08:00  INFO 4032 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-23T01:25:20.011+08:00  INFO 4032 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-06-23T01:25:22.904+08:00  INFO 22036 --- [main] c.e.s.StartPracticeApplication           : Starting StartPracticeApplication using Java 17.0.2 with PID 22036 (C:\demos\demo3\startPractice\target\classes started by Shenjiang in C:\demos\demo3\startPractice)
+2023-06-23T01:25:22.906+08:00  INFO 22036 --- [main] c.e.s.StartPracticeApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-06-23T01:25:23.706+08:00  INFO 22036 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-06-23T01:25:23.707+08:00  INFO 22036 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.36] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.1]
+2023-06-23T01:25:23.707+08:00  INFO 22036 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.36] using APR version [1.7.2].
+2023-06-23T01:25:23.709+08:00  INFO 22036 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1t  7 Feb 2023]
+2023-06-23T01:25:23.715+08:00  INFO 22036 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-06-23T01:25:23.716+08:00  INFO 22036 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-23T01:25:23.788+08:00  INFO 22036 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-06-23T01:25:23.788+08:00  INFO 22036 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 819 ms
+2023-06-23T01:25:24.124+08:00  INFO 22036 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-06-23T01:25:24.255+08:00  INFO 22036 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-06-23T01:25:24.266+08:00  INFO 22036 --- [main] c.e.s.StartPracticeApplication           : Started StartPracticeApplication in 1.84 seconds (process running for 2.453)
+2023-06-23T01:25:38.999+08:00  INFO 22036 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-23T01:25:38.999+08:00  INFO 22036 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-06-23T01:25:39.000+08:00  INFO 22036 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2023-06-23T01:25:39.067+08:00  INFO 22036 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-06-23T01:25:39.266+08:00  INFO 22036 --- [http-nio-8081-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@643101a8
+2023-06-23T01:25:39.268+08:00  INFO 22036 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-06-23T01:26:32.001+08:00  INFO 22036 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-23T01:26:32.009+08:00  INFO 22036 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
