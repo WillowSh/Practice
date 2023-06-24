@@ -210,6 +210,20 @@ const singleChoiceDelOption = (problemIndex, optionIndex) => {
 }
 
 const singleChoiceEditFinish = (problemIndex) => {
+  let params = {
+    questionName: $('#problemName').val(),
+    questionType: "单选"
+  }
+  $.ajax({
+    url: API_BASE_URL + '/addQuestionInfo',
+    type: "POST",
+    data: JSON.stringify(params),
+    dataType: "json",
+    contentType: "application/json",
+    success() {
+      alert('创建成功！')
+    }
+  })
   $(`#question${problemIndex} .bottom`).css('display', 'none')
   $(`#question${problemIndex} .bottom2`).css('display', 'inline')
   $(`#question${problemIndex} #questionTitle`).text(`${problemIndex + 1}.${problem[problemIndex].problemName}`)
