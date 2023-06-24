@@ -420,6 +420,24 @@ const multipleChoiceEditFinish = (problemIndex) => {
       alert('创建成功！')
     }
   })
+  for (let i = 0; i < problem[problemIndex].option.length; i++) {
+    let optionEntity = {
+      optionContent:problem[problemIndex].option[i].chooseTerm,
+      checked:false,
+      questionId:problem[problemIndex].problemId
+    };
+
+    $.ajax({
+      url: API_BASE_URL + '/addOptionInfo',
+      type: "POST",
+      data: JSON.stringify(optionEntity),
+      dataType: "json",
+      contentType: "application/json",
+      success(res) {
+      }
+    })
+
+
 }
 
 const handleAddFillBlanks = () => {
@@ -691,4 +709,4 @@ const handleEditFinish = () => {
       console.log(res)
     }
   })
-}
+}}

@@ -22,5 +22,6 @@
         <mapper resource="mapper/ProjectEntityMapper.xml"/>
         <mapper resource="mapper/QNREntityMapper.xml"/>
         <mapper resource="mapper/QuestionEntityMapper.xml"/>
+        <mapper  resource="mapper/OptionEntityMapper.xml"/>
     </mappers>
 </configuration>
