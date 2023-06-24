@@ -22,5 +22,12 @@
         delete from question_info
         where id = #{id,jdbcType=VARCHAR}
     </delete>
+
+    <update id="modifyQuestionInfo" parameterType="com.example.startpractice.dao.entity.QuestionEntity">
+
+        update question_info set question_type = #{questionType,jdbcType=VARCHAR}, question_content = #{questionContent,jdbcType=VARCHAR},
+                                qnr_id= #{qNRId,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
     
 </mapper>

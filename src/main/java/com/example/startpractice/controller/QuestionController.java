@@ -37,7 +37,6 @@ public class QuestionController {
         }
         return httpResponseEntity;
     }
-
     @PostMapping(value = "/deleteQuestionById",headers = "Accept=application/json")
     public HttpResponseEntity deleteQuestionById(@RequestBody QuestionEntity questionEntity){
 
@@ -58,6 +57,23 @@ public class QuestionController {
         }catch (Exception e){
             System.out.println(e.getMessage());
             e.printStackTrace();
+        }
+        return httpResponseEntity;
+    }
+
+    @PostMapping(value = "/modifyQuestionInfo",headers = "Accept=application/json")
+    public HttpResponseEntity modifyQuestionInfo(@RequestBody QuestionEntity questionEntity){
+        HttpResponseEntity httpResponseEntity=new HttpResponseEntity();
+
+        int result=questionService.modifyQuestionInfo(questionEntity);
+        if(result!=0){
+            httpResponseEntity.setCode("666");
+            httpResponseEntity.setData(result);
+            httpResponseEntity.setMessage("修改成功");
+        }else {
+            httpResponseEntity.setCode("0");
+            httpResponseEntity.setData(0);
+            httpResponseEntity.setMessage("修改失败");
         }
         return httpResponseEntity;
     }

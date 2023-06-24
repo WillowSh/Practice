@@ -151,8 +151,24 @@ const moveCommon = () => {
 }
 
 const handleEdit = (problemIndex) => {
+
   $(`#question${problemIndex} .bottom`).css('display', 'block')
   $(`#question${problemIndex} .bottom2`).css('display', 'none')
+
+  let params={
+    id : problem[problemIndex].problemId,
+  }
+  // 发送 AJAX 请求删除问题
+  $.ajax({
+    url: API_BASE_URL + '/deleteQuestionById',
+    type: "POST",
+    data: JSON.stringify(params), // 将问题内容作为参数传递给后端
+    dataType: "json",
+    contentType: "application/json",
+    success() {
+    }
+  });
+
 }
 
 const handleDelete = (problemIndex) => {
@@ -244,7 +260,7 @@ const singleChoiceEditFinish = (problemIndex) => {
     dataType: "json",
     contentType: "application/json",
     success(res) {
-      alert('创建成功！')
+      alert('成功！')
     }
   })
   $(`#question${problemIndex} .bottom`).css('display', 'none')

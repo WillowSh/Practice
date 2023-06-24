@@ -94,7 +94,7 @@ public class ProjectController {
 
     //用户修改
     @PostMapping(value = "/modifyProjectInfo",headers = "Accept=application/json")
-    public HttpResponseEntity modifyProjectInfo(ProjectEntity projectEntity){
+    public HttpResponseEntity modifyProjectInfo(@RequestBody ProjectEntity projectEntity){
         HttpResponseEntity httpResponseEntity=new HttpResponseEntity();
 
             int result=projectService.modifyProjectInfo(projectEntity);
@@ -114,7 +114,7 @@ public class ProjectController {
 
     //用户删除
     @PostMapping(value = "/deleteProjectById",headers = "Accept=application/json")
-    public HttpResponseEntity deleteProjectById(ProjectEntity projectEntity){
+    public HttpResponseEntity deleteProjectById(@RequestBody ProjectEntity projectEntity){
 
         System.out.println(projectEntity);
         HttpResponseEntity httpResponseEntity=new HttpResponseEntity();

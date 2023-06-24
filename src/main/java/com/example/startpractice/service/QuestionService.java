@@ -7,6 +7,8 @@ import com.example.startpractice.dao.entity.QuestionEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class QuestionService {
     @Autowired
@@ -21,7 +23,11 @@ public class QuestionService {
     public int deleteQuestionById(QuestionEntity questionEntity){
         int questionResult=questionEntityMapper.deleteQuestionById(questionEntity);
         return questionResult;
+    }
 
+    public int modifyQuestionInfo(QuestionEntity questionEntity){
 
+        int questionResult=questionEntityMapper.modifyQuestionInfo(questionEntity);
+        return questionResult;
     }
 }
