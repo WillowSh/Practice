@@ -373,6 +373,7 @@ const multipleChoiceEditFinish = (problemIndex) => {
     questionContent: problem[problemIndex].problemName,
     //$('#problemName').val(),
     questionType: "多选",
+    qNRId:qNRId,
   }
   $.ajax({
     url: API_BASE_URL + '/addQuestionInfo',
