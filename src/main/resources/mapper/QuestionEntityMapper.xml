@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mapper namespace="com.example.startpractice.dao.QNREntityMapper">
-    <insert id="insert" parameterType="com.example.startpractice.dao.entity.QNREntity">
+<mapper namespace="com.example.startpractice.dao.QuestionEntityMapper">
+    <insert id="insert" parameterType="com.example.startpractice.dao.entity.QuestionEntityMapper">
 
 
     </insert>
