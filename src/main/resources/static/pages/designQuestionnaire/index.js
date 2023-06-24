@@ -31,7 +31,7 @@ const onAddQuestion = (type) => {
       break;
   }
   $('#problem').append(ele)
-  problem.push({ problemId:'', problemName: '', mustAnswer: true, option: [{}] })
+  problem.push({ problemId:'', problemName: '', mustAnswer: true, option: [{}],problemType:'' })
 
   $(".question").hover(() => {
     let problemIndex = $('.question:hover').attr('data-problemIndex')
@@ -185,7 +185,7 @@ const handleDelete = (problemIndex) => {
     data: JSON.stringify(params), // 将问题内容作为参数传递给后端
     dataType: "json",
     contentType: "application/json",
-    success() {
+    success(res) {
       alert('删除成功！');
     }
   });
@@ -195,8 +195,31 @@ const handleDelete = (problemIndex) => {
 
 }
 
+const addOptionEditFinish = (problemIndex) => {
+
+
+
+  let params = {
+    questionId: problem[problemIndex].problemId,
+    questionContent: problem[problemIndex].problemName,
+    //$('#problemName').val(),
+    checked: false
+  }
+  $.ajax({
+    url: API_BASE_URL + '/addQuestionInfo',
+    type: "POST",
+    data: JSON.stringify(params),
+    dataType: "json",
+    contentType: "application/json",
+    success(res) {
+      alert('创建成功！')
+    }
+  })
+
+}
 
 const handleAddSingleChoice = () => {
+
   let ele = `
     <div class="question" id="question${problem.length}" data-type="1" data-problemIndex="${problem.length}">
       <div class="top">
@@ -343,6 +366,24 @@ const multipleChoiceEditFinish = (problemIndex) => {
       </div>
     `)
   })
+
+  problem[problemIndex].problemId = Date.now().toString();
+  let params = {
+    id: problem[problemIndex].problemId,
+    questionContent: problem[problemIndex].problemName,
+    //$('#problemName').val(),
+    questionType: "多选",
+  }
+  $.ajax({
+    url: API_BASE_URL + '/addQuestionInfo',
+    type: "POST",
+    data: JSON.stringify(params),
+    dataType: "json",
+    contentType: "application/json",
+    success(res) {
+      alert('创建成功！')
+    }
+  })
 }
 
 const handleAddFillBlanks = () => {
@@ -374,6 +415,24 @@ const fillBlanksEditFinish = (problemIndex) => {
   $(`#question${problemIndex} .bottom2`).html(`
     <div style="border: 1px solid #CCCCCC; width: 50%; height: 70px;"></div>
   `)
+
+  problem[problemIndex].problemId = Date.now().toString();
+  let params = {
+    id: problem[problemIndex].problemId,
+    questionContent: problem[problemIndex].problemName,
+    //$('#problemName').val(),
+    questionType: "填空",
+  }
+  $.ajax({
+    url: API_BASE_URL + '/addQuestionInfo',
+    type: "POST",
+    data: JSON.stringify(params),
+    dataType: "json",
+    contentType: "application/json",
+    success(res) {
+      alert('创建成功！')
+    }
+  })
 }
 
 const handleAddMatrix = () => {
@@ -462,6 +521,24 @@ const matrixEditFinish = (problemIndex) => {
       <th>${item.chooseTerm}</th>
     `)
   })
+
+  problem[problemIndex].problemId = Date.now().toString();
+  let questionContent = problem[problemIndex].problemName+ "//leftTitle:"+$('#leftTitle').val()
+  let params = {
+    id: problem[problemIndex].problemId,
+    questionContent: questionContent,
+    questionType: "矩阵",
+  }
+  $.ajax({
+    url: API_BASE_URL + '/addQuestionInfo',
+    type: "POST",
+    data: JSON.stringify(params),
+    dataType: "json",
+    contentType: "application/json",
+    success(res) {
+      alert('创建成功！')
+    }
+  })
   
 }
 
@@ -539,6 +616,23 @@ const gaugeEditFinish = (problemIndex) => {
   $(`#question${problemIndex} .bottom2`).append(`
     <div>${problem[problemIndex].option[problem[problemIndex].option.length - 1].chooseTerm}</div>
   `)
+
+  problem[problemIndex].problemId = Date.now().toString();
+  let params = {
+    id: problem[problemIndex].problemId,
+    questionContent: problem[problemIndex].problemName,
+    questionType: "量表",
+  }
+  $.ajax({
+    url: API_BASE_URL + '/addQuestionInfo',
+    type: "POST",
+    data: JSON.stringify(params),
+    dataType: "json",
+    contentType: "application/json",
+    success(res) {
+      alert('创建成功！')
+    }
+  })
 }
 
 const handleModifyTitle = () => {

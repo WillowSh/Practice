@@ -19,6 +19,7 @@ const onCreateTemplate = () => {
   let params = {
     projectId: projectId,
     qNRType: $('#selectLeo2').val()
+
   }
 
   // 将 projectId 和 qNRType 参数添加到 URL 中，以便在页面跳转时传递给 createNewQuestionnaire/index.html
