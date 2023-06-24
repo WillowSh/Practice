@@ -1,8 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.startpractice.dao.QuestionEntityMapper">
-    <insert id="insert" parameterType="com.example.startpractice.dao.entity.QuestionEntityMapper">
+    <resultMap id="BaseResultMap" type="com.example.startpractice.dao.entity.QuestionEntity">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="question_type" jdbcType="VARCHAR" property="questionType"/>
+        <result column="question_content" jdbcType="VARCHAR" property="questionContent"/>
+        <result column="qnr_id" jdbcType="VARCHAR" property="qNRId"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, question_type, question_content, qnr_id
+    </sql>
 
+    <insert id="insert" parameterType="com.example.startpractice.dao.entity.QuestionEntity">
 
+        insert into question_info (id, question_type, question_content, qnr_id)
+        values (#{id,jdbcType=VARCHAR}, #{questionType,jdbcType=VARCHAR},
+                #{questionContent,jdbcType=VARCHAR}, #{qNRId,jdbcType=VARCHAR})
     </insert>
-
 </mapper>

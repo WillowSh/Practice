@@ -494,13 +494,14 @@ const handleModifyTitle = () => {
 
 
 const handleEditFinish = () => {
+
   let params = {}
   $.ajax({
     url: API_BASE_URL + '/modifyQuestionnaire',
     type: "POST",
     data: JSON.stringify(params),
     dataType: "json",
-    contentType: "application/jsoresn",
+    contentType: "application/json",
     success(res) {
       console.log(res)
     }
