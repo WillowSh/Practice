@@ -20,5 +20,7 @@
     <mappers>
         <mapper resource="mapper/UserEntityMapper.xml"/>
         <mapper resource="mapper/ProjectEntityMapper.xml"/>
+        <mapper resource="mapper/QNREntityMapper.xml"/>
+        <mapper resource="mapper/QuestionEntityMapper.xml"/>
     </mappers>
 </configuration>

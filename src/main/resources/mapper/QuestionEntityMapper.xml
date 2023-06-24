@@ -17,4 +17,10 @@
         values (#{id,jdbcType=VARCHAR}, #{questionType,jdbcType=VARCHAR},
                 #{questionContent,jdbcType=VARCHAR}, #{qNRId,jdbcType=VARCHAR})
     </insert>
+
+    <delete id="deleteQuestionById" parameterType="com.example.startpractice.dao.entity.QuestionEntity">
+        delete from question_info
+        where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    
 </mapper>

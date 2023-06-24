@@ -29,7 +29,7 @@ const onAddQuestion = (type) => {
       break;
   }
   $('#problem').append(ele)
-  problem.push({ problemName: '', mustAnswer: true, option: [{}] })
+  problem.push({ problemId:'', problemName: '', mustAnswer: true, option: [{}] })
 
   $(".question").hover(() => {
     let problemIndex = $('.question:hover').attr('data-problemIndex')
@@ -156,9 +156,28 @@ const handleEdit = (problemIndex) => {
 }
 
 const handleDelete = (problemIndex) => {
-  $(`#question${problemIndex}`).remove()
-  problem.splice(problemIndex, 1)
+  const questionId = problem[problemIndex].problemId // 获取要删除的问题的内容
+  let params={
+    id : problem[problemIndex].problemId,
+  }
+  // 发送 AJAX 请求删除问题
+  $.ajax({
+    url: API_BASE_URL + '/deleteQuestionById',
+    type: "POST",
+    data: JSON.stringify(params), // 将问题内容作为参数传递给后端
+    dataType: "json",
+    contentType: "application/json",
+    success() {
+      alert('删除成功！');
+    }
+  });
+
+  $(`#question${problemIndex}`).remove();
+  problem.splice(problemIndex, 1);
+
+
 }
+
 
 const handleAddSingleChoice = () => {
   let ele = `
@@ -210,9 +229,13 @@ const singleChoiceDelOption = (problemIndex, optionIndex) => {
 }
 
 const singleChoiceEditFinish = (problemIndex) => {
+
+  problem[problemIndex].problemId = Date.now().toString();
   let params = {
-    questionName: $('#problemName').val(),
-    questionType: "单选"
+    id: problem[problemIndex].problemId,
+    questionContent: problem[problemIndex].problemName,
+    //$('#problemName').val(),
+    questionType: "单选",
   }
   $.ajax({
     url: API_BASE_URL + '/addQuestionInfo',
@@ -220,7 +243,7 @@ const singleChoiceEditFinish = (problemIndex) => {
     data: JSON.stringify(params),
     dataType: "json",
     contentType: "application/json",
-    success() {
+    success(res) {
       alert('创建成功！')
     }
   })
