@@ -7,7 +7,6 @@ public class QuestionEntity implements Serializable {
     private String id;
     private String questionType;
     private String questionContent;
-    private List<OptionEntity> options;
     private String qNRId;
 
     public String getId() {
@@ -34,14 +33,6 @@ public class QuestionEntity implements Serializable {
         this.questionContent = questionContent;
     }
 
-    public List<OptionEntity> getOptions() {
-        return options;
-    }
-
-    public void setOptions(List<OptionEntity> options) {
-        this.options = options;
-    }
-
     public String getqNRId() {
         return qNRId;
     }
@@ -56,7 +47,6 @@ public class QuestionEntity implements Serializable {
                 "id='" + id + '\'' +
                 ", questionType='" + questionType + '\'' +
                 ", questionContent='" + questionContent + '\'' +
-                ", options=" + options +
                 ", qNRId='" + qNRId + '\'' +
                 '}';
     }
