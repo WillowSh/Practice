@@ -271,9 +271,16 @@ const singleChoiceDelOption = (problemIndex, optionIndex) => {
   })
 }
 
+function generateUniqueID(prefix) {
+  const timestamp = Date.now().toString();
+  const random = Math.random().toString(36).substr(2, 9);
+  const uniqueID = prefix + timestamp  + random;
+  return uniqueID;
+}
+
 const singleChoiceEditFinish = (problemIndex) => {
 
-  problem[problemIndex].problemId = Date.now().toString();
+  problem[problemIndex].problemId = generateUniqueID('ques')
   let params = {
     id: problem[problemIndex].problemId,
     questionContent: problem[problemIndex].problemName,
@@ -291,9 +298,6 @@ const singleChoiceEditFinish = (problemIndex) => {
       alert('成功！')
     }
   })
-  let params2 = {
-    optionContent: $('#chooseTerm').val(),
-  }
 
   $(`#question${problemIndex} .bottom`).css('display', 'none')
   $(`#question${problemIndex} .bottom2`).css('display', 'inline')
@@ -327,7 +331,6 @@ const singleChoiceEditFinish = (problemIndex) => {
       dataType: "json",
       contentType: "application/json",
       success(res) {
-        alert('创建成功！')
       }
     })
     params_opt.options.push(optionEntity);

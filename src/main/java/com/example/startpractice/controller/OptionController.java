@@ -2,8 +2,9 @@ package com.example.startpractice.controller;
 
 import com.example.startpractice.beans.HttpResponseEntity;
 import com.example.startpractice.dao.entity.OptionEntity;
-import com.example.startpractice.dao.entity.QNREntity;
+import com.example.startpractice.dao.entity.ProjectEntity;
 import com.example.startpractice.service.OptionService;
+import com.example.startpractice.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,9 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class OptionController {
-
     @Autowired
-    OptionService optionService;
+    public OptionService optionService;
 
     @PostMapping(value = "/addOptionInfo",headers = "Accept=application/json")
     public HttpResponseEntity addOptionInfo(@RequestBody OptionEntity optionEntity){
@@ -30,11 +30,13 @@ public class OptionController {
                 httpResponseEntity.setData(0);
                 httpResponseEntity.setMessage("创建失败");
             }
-            System.out.println(optionEntity);
+            System.out.println(optionEntity.toString());
+            System.out.println("返回结果：" + result);
         }catch (Exception e){
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
         return httpResponseEntity;
     }
+
 }
