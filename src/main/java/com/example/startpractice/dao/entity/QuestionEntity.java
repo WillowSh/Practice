@@ -42,11 +42,11 @@ public class QuestionEntity {
         this.options = options;
     }
 
-    public String getqNRId() {
+    public String getQNRId() {
         return qNRId;
     }
 
-    public void setqNRId(String qNRId) {
+    public void setQNRId(String qNRId) {
         this.qNRId = qNRId;
     }
 }

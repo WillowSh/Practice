@@ -26,4 +26,20 @@
                 #{projectId,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR})
     </insert>
 
+    <select id="queryQNRList" parameterType="java.lang.String" resultType="com.example.startpractice.dao.entity.QNREntity">
+        SELECT id,qnr_type as "qNRType",qnr_name as "qNRName",qnr_content as "qNRContent",creation_date as"creationDate",
+        start_date as "startDate",end_date as "endDate", project_id as "projectId", created_by as "createdBy",user_id as "userId"
+        FROM qnr_info
+        <where>
+            <choose>
+                <when test="qNRName !=null and qNRName != ''">
+                    qnr_name=#{qNRName,jdbcType=VARCHAR}
+                </when >
+                <otherwise>
+                    project_id=#{projectId,jdbcType=VARCHAR}
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
 </mapper>
