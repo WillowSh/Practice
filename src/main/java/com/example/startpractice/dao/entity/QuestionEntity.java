@@ -1,14 +1,14 @@
 package com.example.startpractice.dao.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class QuestionEntity {
+public class QuestionEntity implements Serializable {
     private String id;
     private String questionType;
     private String questionContent;
     private List<OptionEntity> options;
     private String qNRId;
-
 
     public String getId() {
         return id;
@@ -42,11 +42,22 @@ public class QuestionEntity {
         this.options = options;
     }
 
-    public String getQNRId() {
+    public String getqNRId() {
         return qNRId;
     }
 
-    public void setQNRId(String qNRId) {
+    public void setqNRId(String qNRId) {
         this.qNRId = qNRId;
+    }
+
+    @Override
+    public String toString() {
+        return "QuestionEntity{" +
+                "id='" + id + '\'' +
+                ", questionType='" + questionType + '\'' +
+                ", questionContent='" + questionContent + '\'' +
+                ", options=" + options +
+                ", qNRId='" + qNRId + '\'' +
+                '}';
     }
 }

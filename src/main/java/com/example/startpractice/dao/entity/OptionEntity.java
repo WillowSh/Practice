@@ -2,9 +2,8 @@ package com.example.startpractice.dao.entity;
 
 public class OptionEntity {
     private String optionContent;
+    private String checked;
     private String questionId;
-    private String questionType;
-    private String questionContent;
 
     public String getOptionContent() {
         return optionContent;
@@ -12,6 +11,14 @@ public class OptionEntity {
 
     public void setOptionContent(String optionContent) {
         this.optionContent = optionContent;
+    }
+
+    public String getChecked() {
+        return checked;
+    }
+
+    public void setChecked(String checked) {
+        this.checked = checked;
     }
 
     public String getQuestionId() {
@@ -22,19 +29,12 @@ public class OptionEntity {
         this.questionId = questionId;
     }
 
-    public String getQuestionType() {
-        return questionType;
-    }
-
-    public void setQuestionType(String questionType) {
-        this.questionType = questionType;
-    }
-
-    public String getQuestionContent() {
-        return questionContent;
-    }
-
-    public void setQuestionContent(String questionContent) {
-        this.questionContent = questionContent;
+    @Override
+    public String toString() {
+        return "OptionEntity{" +
+                "optionContent='" + optionContent + '\'' +
+                ", checked='" + checked + '\'' +
+                ", questionId='" + questionId + '\'' +
+                '}';
     }
 }
