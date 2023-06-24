@@ -4,10 +4,12 @@ import com.example.startpractice.common.utils.UUIDUtil;
 import com.example.startpractice.dao.QuestionEntityMapper;
 import com.example.startpractice.dao.entity.ProjectEntity;
 import com.example.startpractice.dao.entity.QuestionEntity;
+import com.example.startpractice.dao.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class QuestionService {
@@ -29,5 +31,11 @@ public class QuestionService {
 
         int questionResult=questionEntityMapper.modifyQuestionInfo(questionEntity);
         return questionResult;
+    }
+
+    public List<QuestionEntity> queryQuestionList(QuestionEntity questionEntity){
+
+        List<QuestionEntity> result=questionEntityMapper.queryQuestionList(questionEntity);
+        return result;
     }
 }

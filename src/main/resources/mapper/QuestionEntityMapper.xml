@@ -29,5 +29,11 @@
                                 qnr_id= #{qNRId,jdbcType=VARCHAR}
         where id = #{id,jdbcType=VARCHAR}
     </update>
-    
+
+
+    <select id="queryQuestionList" parameterType="java.lang.String" resultType="com.example.startpractice.dao.entity.QuestionEntity">
+        SELECT id,question_type as "questionType", question_content as "questionContent", qnr_id as "qNRId"
+        FROM question_info
+        WHERE qnr_id= #{qNRId,jdbcType=VARCHAR}
+    </select>
 </mapper>

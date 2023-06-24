@@ -3,11 +3,13 @@ package com.example.startpractice.controller;
 import com.example.startpractice.beans.HttpResponseEntity;
 import com.example.startpractice.dao.entity.ProjectEntity;
 import com.example.startpractice.dao.entity.QuestionEntity;
+import com.example.startpractice.dao.entity.UserEntity;
 import com.example.startpractice.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class QuestionController {
@@ -77,6 +79,26 @@ public class QuestionController {
         }
         return httpResponseEntity;
     }
+    @RequestMapping(value = "/queryQuestionList",method = RequestMethod.POST,headers = "Accept=application/json")
+    public HttpResponseEntity queryQuestionList(@RequestBody QuestionEntity questionEntity){
 
+        HttpResponseEntity httpResponseEntity=new HttpResponseEntity();
+        try {
+            List<QuestionEntity> hasQuestion=questionService.queryQuestionList(questionEntity);
+            if(CollectionUtils.isEmpty(hasQuestion)){
+                httpResponseEntity.setCode("0");
+                httpResponseEntity.setData(null);
+                httpResponseEntity.setMessage("无信息");
+            }else {
+                httpResponseEntity.setCode("666");
+                httpResponseEntity.setData(hasQuestion);
+                httpResponseEntity.setMessage("查询成功");
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return httpResponseEntity;
+    }
 
 }
