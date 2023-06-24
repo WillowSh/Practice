@@ -26,10 +26,16 @@ onload = () => {
 const urlParams = new URLSearchParams(window.location.search);
 const projectId = urlParams.get('projectId');
 const qNRType = urlParams.get('qNRType');
-
+function generateUniqueID(prefix) {
+  const timestamp = Date.now().toString();
+  const random = Math.random().toString(36).substr(2, 9);
+  const uniqueID = prefix + timestamp  + random;
+  return uniqueID;
+}
 
 const handleCreateQNR = () => {
   let params = {
+    id: generateUniqueID('QNR'),
     qNRName: $('#surveyName').val(),
     qNRContent: $('#surveyDescription').val(),
     startDate : $('#startDate').val() && new Date($('#startDate').val()).getTime(),
@@ -53,7 +59,7 @@ const handleCreateQNR = () => {
     contentType: "application/json",
     success() {
       alert('创建成功！')
-      location.href = `/pages/designQuestionnaire/index.html`;
+      location.href = `/pages/designQuestionnaire/index.html?qNRId=${params.id}`; // 重定向到问卷设计页面并传递qNRId作为参数
     }
   })
   console.log("^_^");

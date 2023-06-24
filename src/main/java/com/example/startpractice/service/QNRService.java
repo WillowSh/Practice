@@ -16,7 +16,7 @@ public class QNRService {
 
     public int addQNRInfo(QNREntity qnrEntity){
 
-        qnrEntity.setId(UUIDUtil.getOneUUID());
+        //qnrEntity.setId(UUIDUtil.getOneUUID());
         qnrEntity.setCreationDate(new Date());
 
         int result= qnrEntityMapper.insert(qnrEntity);

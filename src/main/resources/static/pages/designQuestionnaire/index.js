@@ -1,7 +1,9 @@
 let questionnaireTitle = '问卷标题'
 let questionnaireDescription = '问卷说明'
 const problem = []
-
+let QNR = {}; // 初始化 project 对象
+const urlParams = new URLSearchParams(window.location.search);
+const qNRId = urlParams.get('qNRId');
 /**
  * 添加问题
  * 
@@ -191,7 +193,6 @@ const handleDelete = (problemIndex) => {
   $(`#question${problemIndex}`).remove();
   problem.splice(problemIndex, 1);
 
-
 }
 
 
@@ -252,6 +253,7 @@ const singleChoiceEditFinish = (problemIndex) => {
     questionContent: problem[problemIndex].problemName,
     //$('#problemName').val(),
     questionType: "单选",
+    qNRId:qNRId,
   }
   $.ajax({
     url: API_BASE_URL + '/addQuestionInfo',
