@@ -87,6 +87,7 @@ const handleMoveDown = (problemIndex) => {
   moveCommon()
 }
 
+
 const moveCommon = () => {
   $('.question').map((index, item) => {
     item.setAttribute('id', `question${index}`)
