@@ -257,7 +257,9 @@ const singleChoiceAddOption = (problemIndex) => {
       <span class="option-del" onclick="singleChoiceDelOption(${problemIndex}, ${problem[problemIndex].option.length})">删除</span>
     </div>
   `)
-  problem[problemIndex].option.push({})
+  problem[problemIndex].option.push({chooseTerm: $('#chooseTerm').val()})
+
+  // problem[problemIndex].option.push({})
 }
 
 const singleChoiceDelOption = (problemIndex, optionIndex) => {
@@ -288,6 +290,10 @@ const singleChoiceEditFinish = (problemIndex) => {
       alert('成功！')
     }
   })
+  let params2 = {
+    optionContent: $('#chooseTerm').val(),
+  }
+
   $(`#question${problemIndex} .bottom`).css('display', 'none')
   $(`#question${problemIndex} .bottom2`).css('display', 'inline')
   $(`#question${problemIndex} #questionTitle`).text(`${problemIndex + 1}.${problem[problemIndex].problemName}`)
@@ -301,6 +307,31 @@ const singleChoiceEditFinish = (problemIndex) => {
       </div>
     `)
   })
+
+  let params_opt = {
+    options: []
+  };
+
+  for (let i = 0; i < problem[problemIndex].option.length; i++) {
+    let optionEntity = {
+      optionContent:problem[problemIndex].option[i].chooseTerm,
+      checked:false,
+      questionId:problem[problemIndex].problemId
+    };
+
+    $.ajax({
+      url: API_BASE_URL + '/addOptionInfo',
+      type: "POST",
+      data: JSON.stringify(optionEntity),
+      dataType: "json",
+      contentType: "application/json",
+      success(res) {
+        alert('创建成功！')
+      }
+    })
+    params_opt.options.push(optionEntity);
+  }
+
 }
 
 const handleAddMultipleChoice = () => {
@@ -319,11 +350,11 @@ const handleAddMultipleChoice = () => {
           </div>
         </div>
         <div>
-          <button type="button" class="btn btn-link btn-add-option" onClick="multipleChoiceAddOption(${problem.length})">添加选项</button>
+          <button type="button" class="btn btn-link btn-add-option" onclick="multipleChoiceAddOption(${problem.length})">添加选项</button>
         </div>
         <div class="btn-group">
           <button type="button" id="cancelEdit" class="btn btn-default" onclick="cancelEdit(${problem.length})">取消编辑</button>
-          <button type="button" id="editFinish" class="btn btn-default" onClick="multipleChoiceEditFinish(${problem.length})">完成编辑</button>
+          <button type="button" id="editFinish" class="btn btn-default" onclick="multipleChoiceEditFinish(${problem.length})">完成编辑</button>
         </div>
       </div>
       <div class="bottom2" style="display: none;">
@@ -398,7 +429,7 @@ const handleAddFillBlanks = () => {
         <textarea class="form-control textarea" id="problemName" placeholder="请输入题目" rows="4" oninput="onInput(${problem.length}, ${undefined}, 'problemName')"></textarea>
         <div class="btn-group">
           <button type="button" id="cancelEdit" class="btn btn-default" onclick="cancelEdit(${problem.length})">取消编辑</button>
-          <button type="button" id="editFinish" class="btn btn-default" onClick="fillBlanksEditFinish(${problem.length})">完成编辑</button>
+          <button type="button" id="editFinish" class="btn btn-default" onclick="fillBlanksEditFinish(${problem.length})">完成编辑</button>
         </div>
       </div>
       <div class="bottom2" style="display: none;">
@@ -454,11 +485,11 @@ const handleAddMatrix = () => {
           </div>
         </div>
         <div>
-          <button type="button" class="btn btn-link btn-add-option" onClick="matrixAddOption(${problem.length})">添加选项</button>
+          <button type="button" class="btn btn-link btn-add-option" onclick="matrixAddOption(${problem.length})">添加选项</button>
         </div>
         <div class="btn-group">
           <button type="button" id="cancelEdit" class="btn btn-default" onclick="cancelEdit(${problem.length})">取消编辑</button>
-          <button type="button" id="editFinish" class="btn btn-default" onClick="matrixEditFinish(${problem.length})">完成编辑</button>
+          <button type="button" id="editFinish" class="btn btn-default" onclick="matrixEditFinish(${problem.length})">完成编辑</button>
         </div>
       </div>
       <div class="bottom2" style="display: none; padding-left: 80px;"></div>
@@ -565,11 +596,11 @@ const handleAddGauge = () => {
           </div>
         </div>
         <div>
-          <button type="button" class="btn btn-link btn-add-option" onClick="gaugeAddOption(${problem.length})">添加选项</button>
+          <button type="button" class="btn btn-link btn-add-option" onclick="gaugeAddOption(${problem.length})">添加选项</button>
         </div>
         <div class="btn-group">
           <button type="button" id="cancelEdit" class="btn btn-default" onclick="cancelEdit(${problem.length})">取消编辑</button>
-          <button type="button" id="editFinish" class="btn btn-default" onClick="gaugeEditFinish(${problem.length})">完成编辑</button>
+          <button type="button" id="editFinish" class="btn btn-default" onclick="gaugeEditFinish(${problem.length})">完成编辑</button>
         </div>
       </div>
       <div class="bottom2" style="display: none; align-items: center; justify-content: space-between;"></div>
