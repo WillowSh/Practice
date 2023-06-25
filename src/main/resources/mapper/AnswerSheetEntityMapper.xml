@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.startpractice.dao.AnswerSheetEntityMapper">
+    <resultMap id="BaseResultMap" type="com.example.startpractice.dao.entity.AnswerSheetEntity">
+        <result column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="respondent" jdbcType="VARCHAR" property="respondent"/>
+        <result column="qnr_id" jdbcType="VARCHAR" property="qNRId"/>
+        <result column="answer_date" jdbcType="TIMESTAMP" property="answerDate"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, respondent, qnr_id, answer_date
+    </sql>
+
+    <select id="queryAnswerSheetList" parameterType="java.lang.String" resultType="com.example.startpractice.dao.entity.AnswerSheetEntity">
+        SELECT id , respondent, qnr_id as "qNRId", answer_date as "answerDate"
+        FROM as_info
+        WHERE qnr_id= #{qNRId,jdbcType=VARCHAR}
+    </select>
+
+</mapper>
