@@ -1,0 +1,42 @@
+package com.example.startpractice.controller;
+
+import com.example.startpractice.beans.HttpResponseEntity;
+import com.example.startpractice.dao.entity.AnswerSheetEntity;
+import com.example.startpractice.service.AnswerSheetService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+public class AnswerSheetController {
+    @Autowired
+    public AnswerSheetService answerSheetService;
+
+    @RequestMapping(value = "/queryAnswerSheetList",method = RequestMethod.POST,headers = "Accept=application/json")
+    public HttpResponseEntity queryAnswerSheetList(@RequestBody AnswerSheetEntity answerSheetEntity){
+
+        HttpResponseEntity httpResponseEntity=new HttpResponseEntity();
+        try {
+            List<AnswerSheetEntity> hasAnswerSheet=answerSheetService.queryAnswerSheetList(answerSheetEntity);
+            if(CollectionUtils.isEmpty(hasAnswerSheet)){
+                httpResponseEntity.setCode("0");
+                httpResponseEntity.setData(null);
+                httpResponseEntity.setMessage("无信息");
+            }else {
+                httpResponseEntity.setCode("666");
+                httpResponseEntity.setData(hasAnswerSheet);
+                httpResponseEntity.setMessage("查询成功");
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return httpResponseEntity;
+    }
+
+}
