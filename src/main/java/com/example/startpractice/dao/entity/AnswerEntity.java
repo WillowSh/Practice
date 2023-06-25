@@ -1,6 +1,6 @@
 package com.example.startpractice.dao.entity;
 
-public class AnswersEntity {
+public class AnswerEntity {
     private String questionId;
     private String answer;
     private String asId;
