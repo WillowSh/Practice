@@ -7,6 +7,8 @@ import com.example.startpractice.dao.entity.QuestionEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class OptionService {
     @Autowired
@@ -16,6 +18,12 @@ public class OptionService {
         //optionEntity.setId(UUIDUtil.getOneUUID());
 
         int result= optionEntityMapper.insert(optionEntity);
+        return result;
+    }
+
+    public List<OptionEntity> queryOptionList(OptionEntity optionEntity){
+
+        List<OptionEntity> result=optionEntityMapper.queryOptionList(optionEntity);
         return result;
     }
     

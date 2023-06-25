@@ -2,7 +2,7 @@
 let questionList = []
 onload = () => {
   fetchQuestionList()
-  /*
+/*
     $('#problem').append(`
     <div class="question" id="question1" data-type="1" data-problemIndex="1">
       <div class="top">
@@ -145,14 +145,16 @@ onload = () => {
     </div>
   `)*/
 }
+
+
 const fetchQuestionList = () => {
   let params = {
     /* pageNum,
-     pageSize: 10,*/
+    pageSize: 10, */
     qNRId: "QNR1687615803759t0tylsxf2"
   }
   $.ajax({
-    url: API_BASE_URL + '/admin/queryQuestionList',
+    url: API_BASE_URL + '/queryQuestionList',
     type: 'POST',
     data: JSON.stringify(params),
     dataType: 'json',
@@ -168,37 +170,59 @@ const fetchQuestionList = () => {
               <span class="must-answer" id="mustAnswer">必答题</span>
             </div>
             <div class="bottom">
+              <p class="question-content">${item.questionContent}</p>
         `;
 
-        if (item.questionType === '单选题') {
-          item.options.forEach((option, optionIndex) => {
-            questionHtml += `
-              <div style="display: flex; align-items: center; margin-bottom: 3px;">
-                <label class="radio-inline">
-                  <input type="radio" name="chooseTerm${index}" value="${optionIndex + 1}">${option}
-                </label>
-              </div>
-            `;
-          });
-        } else if (item.questionType === '多选题') {
-          item.options.forEach((option, optionIndex) => {
-            questionHtml += `
-              <div style="display: flex; align-items: center; margin-bottom: 3px;">
-                <label class="checkbox-inline">
-                  <input type="checkbox" name="chooseTerm${index}" value="${optionIndex + 1}">${option}
-                </label>
-              </div>
-            `;
+
+        if (item.questionType === '填空') {
+          questionHtml += `
+             <textarea class="form-control" placeholder="请输入" rows="4" style="width: 70%;"></textarea>
+    `;
+          $('#problem').append(questionHtml);
+        } else {
+          let optionParams = {
+            questionId: item.id
+          };
+
+          $.ajax({
+            url: API_BASE_URL + '/queryOptionList',
+            type: 'POST',
+            data: JSON.stringify(optionParams),
+            dataType: 'json',
+            contentType: 'application/json',
+            success(optionRes) {
+              optionRes.data.forEach((option, optionIndex) => {
+                if (item.questionType === '单选') {
+                  questionHtml += `
+                  <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                    <label class="radio-inline">
+                      <input type="radio" name="chooseTerm${index}" value="${optionIndex}">${option.optionContent}
+                    </label>
+                  </div>
+                `;
+                } else if (item.questionType === '多选') {
+                  questionHtml += `
+                  <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                    <label class="checkbox-inline">
+                      <input type="checkbox" name="chooseTerm${index}" value="${optionIndex}">${option.optionContent}
+                    </label>
+                  </div>
+                `;
+                }
+
+              });
+              questionHtml += `
+          </div>
+        </div>
+      `;
+              $('#problem').append(questionHtml);
+            }
+
           });
         }
-
-        questionHtml += `
-            </div>
-          </div>
-        `;
-
-        $('#problem').append(questionHtml);
       });
+
     }
   });
 }
+

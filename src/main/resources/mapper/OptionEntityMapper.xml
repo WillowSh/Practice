@@ -17,4 +17,10 @@
                   #{questionId,jdbcType=VARCHAR})
     </insert>
 
+    <select id="queryOptionList" parameterType="java.lang.String" resultType="com.example.startpractice.dao.entity.OptionEntity">
+        SELECT option_content as "optionContent", checked as "checked", question_id as "questionId"
+        FROM option_info
+        WHERE question_id= #{questionId,jdbcType=VARCHAR}
+    </select>
+
 </mapper>
