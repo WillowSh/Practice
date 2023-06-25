@@ -33,6 +33,9 @@
                 <when test="projectName !=null and projectName != ''">
                     project_name=#{projectName,jdbcType=VARCHAR}
                 </when >
+                <when test="id !=null and id != ''">
+                    id = #{id,jdbcType=VARCHAR}
+                </when >
                 <otherwise>
                     created_by=#{createdBy,jdbcType=VARCHAR}
                 </otherwise>
