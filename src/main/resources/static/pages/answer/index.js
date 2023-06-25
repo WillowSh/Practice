@@ -1,12 +1,13 @@
 let questionList = [];
-
+let answerList=[];
+let answer=[];
 onload = () => {
   fetchQuestionList();
 };
 
 const fetchQuestionList = () => {
   let params = {
-    qNRId: "QNR1687673721182all8ozuct"
+    qNRId: "QNR1687615803759t0tylsxf2"
   };
 
   $.ajax({
@@ -44,12 +45,12 @@ const fetchQuestionList = () => {
           });
 
           // Compare option with answer
-         /* let answerParams = {
+         let answerParams = {
             questionId: item.id,
           };
 
           $.ajax({
-            url: API_BASE_URL + '/queryAnswerList',
+            url: API_BASE_URL + '/queryAnswerList2',
             type: 'POST',
             data: JSON.stringify(answerParams),
             dataType: 'json',
@@ -57,10 +58,12 @@ const fetchQuestionList = () => {
             success(answerRes) {
               if (answerRes.code === '666') {
                 const textarea = document.querySelector('.form-control');
-                textarea.value = answerRes;
+                answerList=answerRes.data;
+                answer=answerList.map(asl => asl.answer)[0];
+                textarea.value = answer;
               }
             }
-          });*/
+          });
 
         } else{ /*(item.questionType === '单选' || item.questionType === '多选') */
           let optionParams = {
@@ -176,7 +179,7 @@ const fetchQuestionList = () => {
                         choose_type = "radio"
                       }
 
-                      const chooseTerm = document.querySelector(`input[type=${choose_type}][name="${checkboxName}"]`);
+                      const chooseTerm = document.querySelector(`input[type=${choose_type}][value="${optionIndex}"]`);
                        // 将复选框设置为选中状态
                       chooseTerm.checked = true;
 

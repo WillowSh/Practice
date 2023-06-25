@@ -10,4 +10,5 @@ import java.util.List;
 @Component
 public interface AnswerEntityMapper {
     List<AnswerEntity> queryAnswerList(AnswerEntity answerEntity);
+    List<AnswerEntity> queryAnswerList2(AnswerEntity answerEntity);
 }

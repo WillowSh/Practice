@@ -38,6 +38,27 @@ public class AnswerController {
         }
         return httpResponseEntity;
     }
+    @RequestMapping(value = "/queryAnswerList2",method = RequestMethod.POST,headers = "Accept=application/json")
+    public HttpResponseEntity queryAnswerList2(@RequestBody AnswerEntity answerEntity){
+
+        HttpResponseEntity httpResponseEntity=new HttpResponseEntity();
+        try {
+            List<AnswerEntity> hasAnswer=answerService.queryAnswerList2(answerEntity);
+            if(CollectionUtils.isEmpty(hasAnswer)){
+                httpResponseEntity.setCode("0");
+                httpResponseEntity.setData(null);
+                httpResponseEntity.setMessage("无信息");
+            }else {
+                httpResponseEntity.setCode("666");
+                httpResponseEntity.setData(hasAnswer);
+                httpResponseEntity.setMessage("查询成功");
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return httpResponseEntity;
+    }
 
 
 }

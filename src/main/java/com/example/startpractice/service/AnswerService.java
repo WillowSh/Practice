@@ -16,4 +16,10 @@ public class AnswerService {
         List<AnswerEntity> result=answerEntityMapper.queryAnswerList(answerEntity);
         return result;
     }
+
+    public List<AnswerEntity> queryAnswerList2(AnswerEntity answerEntity){
+
+        List<AnswerEntity> result=answerEntityMapper.queryAnswerList2(answerEntity);
+        return result;
+    }
 }
