@@ -1,4 +1,8 @@
+
+let questionList = []
 onload = () => {
+  fetchQuestionList()
+  /*
     $('#problem').append(`
     <div class="question" id="question1" data-type="1" data-problemIndex="1">
       <div class="top">
@@ -139,5 +143,62 @@ onload = () => {
         <div>很不满意</div>
       </div>
     </div>
-  `)
+  `)*/
+}
+const fetchQuestionList = () => {
+  let params = {
+    /* pageNum,
+     pageSize: 10,*/
+    qNRId: "QNR1687615803759t0tylsxf2"
+  }
+  $.ajax({
+    url: API_BASE_URL + '/admin/queryQuestionList',
+    type: 'POST',
+    data: JSON.stringify(params),
+    dataType: 'json',
+    contentType: 'application/json',
+    success(res) {
+      $('#problem').html(''); // Clear previous questions
+      questionList = res.data;
+      res.data.map((item, index) => {
+        let questionHtml = `
+          <div class="question" id="question${index + 1}" data-type="${item.questionType}" data-problemIndex="${index + 1}">
+            <div class="top">
+              <span class="question-title" id="questionTitle">${index + 1}.${item.questionType}</span>
+              <span class="must-answer" id="mustAnswer">必答题</span>
+            </div>
+            <div class="bottom">
+        `;
+
+        if (item.questionType === '单选题') {
+          item.options.forEach((option, optionIndex) => {
+            questionHtml += `
+              <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                <label class="radio-inline">
+                  <input type="radio" name="chooseTerm${index}" value="${optionIndex + 1}">${option}
+                </label>
+              </div>
+            `;
+          });
+        } else if (item.questionType === '多选题') {
+          item.options.forEach((option, optionIndex) => {
+            questionHtml += `
+              <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                <label class="checkbox-inline">
+                  <input type="checkbox" name="chooseTerm${index}" value="${optionIndex + 1}">${option}
+                </label>
+              </div>
+            `;
+          });
+        }
+
+        questionHtml += `
+            </div>
+          </div>
+        `;
+
+        $('#problem').append(questionHtml);
+      });
+    }
+  });
 }
