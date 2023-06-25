@@ -716,3 +716,6 @@ const handleEditFinish = () => {
     }
   })
 }
+const handlePreview =()=>{
+  location.href = '/pages/answerSheet/index.html?qNRId='+qNRId
+}
