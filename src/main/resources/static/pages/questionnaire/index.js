@@ -31,6 +31,7 @@ const fetchProjectList = () => {
                 <button type="button" class="btn btn-link" onclick="onSeeProject('${item.id}')">查看</button>
                 <button type="button" class="btn btn-link" onclick="onEditProject('${item.id}')">编辑</button>
                 <button type="button" class="btn btn-link" onclick="onDelProject('${item.id}')">删除</button>
+                 <button type="button" class="btn btn-link" onclick="seeStats()">统计</button>
               </div>
             </div>
             <div class="list-footer">
@@ -94,4 +95,7 @@ const onDelProject = (pid) => {
     })
   }
   
+}
+const seeStats = () =>{
+  location.href = "/pages/stats/index.html"
 }
