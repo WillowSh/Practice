@@ -14,6 +14,7 @@
         SELECT question_id as "questionId", answer as "answer", as_id as "asId"
         FROM answer_info
         WHERE question_id= #{questionId,jdbcType=VARCHAR} AND answer= #{answer,jdbcType=VARCHAR}
+          AND as_id= #{asId,jdbcType=VARCHAR}
     </select>
 
     <select id="queryAnswerList2" parameterType="java.lang.String" resultType="com.example.startpractice.dao.entity.AnswerEntity">

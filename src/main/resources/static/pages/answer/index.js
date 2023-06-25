@@ -4,10 +4,13 @@ let answer=[];
 onload = () => {
   fetchQuestionList();
 };
+const urlParams = new URLSearchParams(window.location.search);
+const asId = urlParams.get('asId');
+const qNRId = urlParams.get('qNRId');
 
 const fetchQuestionList = () => {
   let params = {
-    qNRId: "QNR1687615803759t0tylsxf2"
+    qNRId: qNRId//"QNR1687615803759t0tylsxf2"
   };
 
   $.ajax({
@@ -47,6 +50,7 @@ const fetchQuestionList = () => {
           // Compare option with answer
          let answerParams = {
             questionId: item.id,
+           asId: asId,
           };
 
           $.ajax({
@@ -155,6 +159,7 @@ const fetchQuestionList = () => {
                 // Compare option with answer
                 let answerParams = {
                   questionId: item.id,
+                  asId: asId,
                   answer: option.optionContent
                 };
 

@@ -10,6 +10,7 @@ let qnrList = [];
 let answerSheetList = [];
 let qnrName=[];
 
+
 const fetchQNRList = () => {
     let qnrParams = {
         projectId: projectId
@@ -24,14 +25,15 @@ const fetchQNRList = () => {
         success(res) {
             qnrList = res.data;
             qnrName=qnrList.map(qnr => qnr.qNRName)[0]
-            fetchAnswerSheetList(); // 在成功获取QNR列表后调用获取AnswerSheet列表的函数
+
+            fetchAnswerSheetList(qnrList.map(qnr => qnr.id)[0]); // 在成功获取QNR列表后调用获取AnswerSheet列表的函数
         }
     });
 };
 
-const fetchAnswerSheetList = () => {
+const fetchAnswerSheetList = (qnrid) => {
     let params = {
-        qNRId: qnrList.map(qnr => qnr.id)[0] // 从QNR列表中提取QNRId构成数组
+        qNRId: qnrid
     };
     console.log("!!!"+JSON.stringify(params));
 
@@ -52,7 +54,7 @@ const fetchAnswerSheetList = () => {
             <td>${item.respondent}</td>
             <td>${item.answerDate}</td>
             <td>
-              <button type="button" class="btn btn-link" onclick="seeDetailed('${item.id}')">明细</button>
+              <button type="button" class="btn btn-link" onclick="seeDetailed('${item.id}','${item.qNRId}')">明细</button>
             </td>
           </tr>
         `);
@@ -61,6 +63,7 @@ const fetchAnswerSheetList = () => {
     });
 };
 
-const seeDetailed = (answerSheetId) => {
+const seeDetailed = (answerSheetId,qNRId) => {
     // 根据AnswerSheet的id执行您想要的操作
+    location.href = '/pages/answer/index.html?asId='+answerSheetId+'&qNRId='+qNRId
 };

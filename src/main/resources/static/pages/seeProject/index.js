@@ -50,10 +50,10 @@ const seeQuestionnaire = (id) =>{
             <td>${item.qNRName}</td>
             <td>${item.creationDate}</td>
             <td>
-              <button type="button" class="btn btn-link" onclick="seePreview(${item.qNRId})">预览</button>
-              <button type="button" class="btn btn-link" onclick="onRelease(${item.qNRId})">发布</button>
-              <button type="button" class="btn btn-link btn-red" onclick="onDelete(${item.qNRId})">删除</button>
-              <button type="button" class="btn btn-link btn-red" onclick="onCalculate(${item.qNRId})">统计</button>
+              <button type="button" class="btn btn-link" onclick="seePreview('${item.id}')">预览</button>
+              <button type="button" class="btn btn-link" onclick="onRelease(${item.id})">发布</button>
+              <button type="button" class="btn btn-link btn-red" onclick="onDelete(${item.id})">删除</button>
+              <button type="button" class="btn btn-link btn-red" onclick="onCalculate(${item.id})">统计</button>
             </td>
           </tr>
         `)
@@ -65,8 +65,7 @@ const seeQuestionnaire = (id) =>{
 }
 
 const seePreview = (id) =>{
-
-
+  location.href = '/pages/answerSheet/index.html?qNRId='+id
 }
 const onRelease = (id) =>{
 
