@@ -6,7 +6,7 @@ onload = () => {
 
 const fetchQuestionList = () => {
   let params = {
-    qNRId: "QNR1687615803759t0tylsxf2"
+    qNRId: "QNR1687673721182all8ozuct"
   };
 
   $.ajax({
@@ -38,7 +38,7 @@ const fetchQuestionList = () => {
             $('#problem').append(questionHtml); // 在这里编写你的代码
           });
 
-        } else if (item.questionType === '单选' || item.questionType === '多选') {
+        } else{ /*(item.questionType === '单选' || item.questionType === '多选') */
           let optionParams = {
             questionId: item.id
           };
@@ -50,6 +50,8 @@ const fetchQuestionList = () => {
             dataType: 'json',
             contentType: 'application/json',
             success(optionRes) {
+              let optionHtml_1 = '';
+              let optionHtml_2 = '';
               optionRes.data.forEach((option, optionIndex) => {
                 let optionHtml = '';
 
@@ -69,9 +71,41 @@ const fetchQuestionList = () => {
                       </label>
                     </div>
                   `;
+                }else if (item.questionType === '矩阵') {
+
+                  optionHtml_1 += `<th>选项 ${optionIndex+1}</th>\n`;
+
+                  optionHtml_2 += `<td><input type="radio" name="chooseTerm${optionIndex+1}" /></td>\n`;
+                  console.log(optionHtml_1)
+
+                  if (optionIndex === optionRes.data.length-1) {
+                    let leftContent = item.questionContent.substring(item.questionContent.indexOf(':') + 1);
+                    optionHtml =`
+                          <div class="bottom">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th></th>
+                              `+optionHtml_1+
+                               `
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                    <td>${leftContent}</td>
+                              `+optionHtml_2+
+                                ` 
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                             `;
+                    console.log(optionHtml);
+                  }
                 }
 
-                // Compare option with answer
+
+                /*// Compare option with answer
                 let answerParams = {
                   questionId: item.id,
                   answer: option.optionContent
@@ -92,15 +126,18 @@ const fetchQuestionList = () => {
                   }
                 });
 
-                questionHtml += optionHtml;
+                questionHtml += optionHtml;*/
+               questionHtml += optionHtml;
               });
-              questionHtml += `
+
+                questionHtml += `
+                  </div>
                 </div>
-              </div>
-              `;
-              $('#problem').append(questionHtml);
-            }
-          });
+                `;
+                $('#problem').append(questionHtml);
+              }
+
+           });
         }
 
       });
