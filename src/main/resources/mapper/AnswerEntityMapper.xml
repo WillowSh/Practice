@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.startpractice.dao.AnswerEntityMapper">
+    <resultMap id="BaseResultMap" type="com.example.startpractice.dao.entity.AnswerEntity">
+        <result column="question_id" jdbcType="VARCHAR" property="questionId"/>
+        <result column="answer" jdbcType="VARCHAR" property="answer"/>
+        <result column="as_id" jdbcType="VARCHAR" property="asId"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+         question_id, answer, as_id
+    </sql>
+
+    <select id="queryAnswerList" parameterType="java.lang.String" resultType="com.example.startpractice.dao.entity.AnswerEntity">
+        SELECT question_id as "questionId", answer as "answer", as_id as "asId"
+        FROM answer_info
+        WHERE question_id= #{questionId,jdbcType=VARCHAR} AND answer= #{answer,jdbcType=VARCHAR}
+    </select>
+
+</mapper>
