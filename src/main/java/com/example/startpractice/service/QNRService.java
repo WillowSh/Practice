@@ -3,6 +3,7 @@ package com.example.startpractice.service;
 import com.example.startpractice.common.utils.UUIDUtil;
 import com.example.startpractice.dao.QNREntityMapper;
 import com.example.startpractice.dao.entity.QNREntity;
+import com.example.startpractice.dao.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +30,12 @@ public class QNRService {
         List<QNREntity> result=qnrEntityMapper.queryQNRList(qnrEntity);
         return result;
     }
+
+    public int deleteQNRById(QNREntity qnrEntity){
+        int qnrResult=qnrEntityMapper.deleteQNRById(qnrEntity);
+        return qnrResult;
+
+    }
+
 
 }
