@@ -55,7 +55,7 @@ const seeQuestionnaire = (id) =>{
               <button type="button" class="btn btn-link" onclick="seePreview('${item.id}')">预览</button>
               <button type="button" class="btn btn-link" onclick="onRelease('${item.id}')">发布</button>
               <button type="button" class="btn btn-link btn-red" onclick="onDelete('${item.id}')">删除</button>
-              <button type="button" class="btn btn-link btn-red" onclick="onCalculate('${item.id}')">统计</button>
+              <button type="button" class="btn btn-link btn-red" onclick="onCalculate('${item.id}','${item.qNRName}')">统计</button>
             </td>
           </tr>
         `)
@@ -105,7 +105,6 @@ const onDelete = (id) =>{
 
   })
 }
-
-const onCalculate = (id) =>{
-
+const onCalculate = (id,name) =>{
+  location.href = '/pages/answerStats/index.html?qNRId='+id+'&qNRName='+name
 }
