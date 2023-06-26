@@ -1,9 +1,31 @@
-let questionnaireTitle = '问卷标题'
-let questionnaireDescription = '问卷说明'
-const problem = []
+const problem = [];
 let QNR = {}; // 初始化 project 对象
 const urlParams = new URLSearchParams(window.location.search);
 const qNRId = urlParams.get('qNRId');
+let questionnaireTitle = 'qNRName';
+let questionnaireDescription = '问卷说明';
+onload= () =>{
+
+  let qNRName = '';
+  let qnrParams = {
+    id:qNRId,
+  };
+
+  $.ajax({
+    url: API_BASE_URL + '/queryQNR',
+    type: "POST",
+    data: JSON.stringify(qnrParams),
+    dataType: "json",
+    contentType: "application/json",
+    success(res) {
+      questionnaireTitle=res.data[0].qNRName
+      document.getElementById('qnrTitle').innerHTML = questionnaireTitle;
+    }
+  })
+
+}
+
+
 /**
  * 添加问题
  * 

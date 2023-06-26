@@ -42,6 +42,14 @@
 <!--            </choose>-->
 <!--        </where>-->
     </select>
+    <select id="queryQNR" parameterType="java.lang.String" resultType="com.example.startpractice.dao.entity.QNREntity">
+        SELECT id,qnr_type as "qNRType",qnr_name as "qNRName",qnr_content as "qNRContent",creation_date as"creationDate",
+        start_date as "startDate",end_date as "endDate", project_id as "projectId", created_by as "createdBy",user_id as "userId"
+        FROM qnr_info
+        WHERE id= #{id,jdbcType=VARCHAR}
+
+    </select>
+
 
     <delete id="deleteQNRById" parameterType="com.example.startpractice.dao.entity.QNREntity">
         <!--

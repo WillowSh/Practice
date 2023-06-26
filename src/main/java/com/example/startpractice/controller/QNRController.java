@@ -59,6 +59,27 @@ public class QNRController {
         }
         return httpResponseEntity;
     }
+    @PostMapping(value = "/queryQNR",headers = "Accept=application/json")
+    public HttpResponseEntity queryQNR(@RequestBody QNREntity qnrEntity){
+
+        HttpResponseEntity httpResponseEntity=new HttpResponseEntity();
+        try {
+            List<QNREntity> hasQNR=qnrService.queryQNR(qnrEntity);
+            if(CollectionUtils.isEmpty(hasQNR)){
+                httpResponseEntity.setCode("0");
+                httpResponseEntity.setData(hasQNR);
+                httpResponseEntity.setMessage("无项目信息");
+            }else {
+                httpResponseEntity.setCode("666");
+                httpResponseEntity.setData(hasQNR);
+                httpResponseEntity.setMessage("查询成功");
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return httpResponseEntity;
+    }
 
 
     @RequestMapping(value = "/deleteQNRById",method = RequestMethod.POST,headers = "Accept=application/json")
