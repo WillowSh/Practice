@@ -13,4 +13,6 @@ public interface QNREntityMapper {
     int insert(QNREntity qnrEntity);
 
     List<QNREntity> queryQNRList(QNREntity qnrEntity);
+
+    List<QNREntity> queryQNR(QNREntity qnrEntity);
 }

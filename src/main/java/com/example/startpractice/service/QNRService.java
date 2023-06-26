@@ -29,5 +29,10 @@ public class QNRService {
         List<QNREntity> result=qnrEntityMapper.queryQNRList(qnrEntity);
         return result;
     }
+    public List<QNREntity> queryQNR(QNREntity qnrEntity){
+
+        List<QNREntity> result=qnrEntityMapper.queryQNR(qnrEntity);
+        return result;
+    }
 
 }
