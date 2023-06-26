@@ -81,6 +81,26 @@ public class AnswerController {
         }
         return httpResponseEntity;
     }
+    @PostMapping(value = "/queryAnswerForStat",headers = "Accept=application/json")
+    public HttpResponseEntity queryAnswerForStat(@RequestBody AnswerEntity answerEntity){
 
+        HttpResponseEntity httpResponseEntity=new HttpResponseEntity();
+        try {
+            int result=answerService.queryAnswerForStat(answerEntity);
+            if(result!=0){
+                httpResponseEntity.setCode("666");
+                httpResponseEntity.setData(result);
+                httpResponseEntity.setMessage("查询成功");
+            }else {
+                httpResponseEntity.setCode("0");
+                httpResponseEntity.setData(0);
+                httpResponseEntity.setMessage("查询失败");
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return httpResponseEntity;
+    }
 
 }

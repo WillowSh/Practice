@@ -23,6 +23,12 @@
         WHERE question_id= #{questionId,jdbcType=VARCHAR} AND as_id= #{asId,jdbcType=VARCHAR}
     </select>
 
+    <select id="queryAnswerForStat" parameterType="java.lang.String" resultType="com.example.startpractice.dao.entity.AnswerEntity">
+        SELECT question_id as "questionId", answer as "answer", as_id as "asId"
+        FROM answer_info
+        WHERE question_id= #{questionId,jdbcType=VARCHAR} AND answer= #{answer,jdbcType=VARCHAR}
+    </select>
+
     <insert id="insert" parameterType="com.example.startpractice.dao.entity.AnswerEntity">
 
         insert into answer_info (question_id, answer, as_id)

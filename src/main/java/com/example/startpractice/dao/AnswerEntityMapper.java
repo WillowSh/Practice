@@ -12,6 +12,6 @@ import java.util.List;
 public interface AnswerEntityMapper {
     List<AnswerEntity> queryAnswerList(AnswerEntity answerEntity);
     List<AnswerEntity> queryAnswerList2(AnswerEntity answerEntity);
-
+    List<AnswerEntity> queryAnswerForStat(AnswerEntity answerEntity);
     int insert(AnswerEntity answerEntity);
 }

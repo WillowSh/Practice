@@ -23,6 +23,7 @@
         WHERE id= #{id,jdbcType=VARCHAR}
     </select>
 
+
     <insert id="insert" parameterType="com.example.startpractice.dao.entity.AnswerSheetEntity">
 
         insert into as_info (id, respondent, qnr_id , answer_date)
