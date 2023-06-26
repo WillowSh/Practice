@@ -24,16 +24,18 @@ const fetchQNRList = () => {
         contentType: 'application/json',
         success(res) {
             qnrList = res.data;
-            qnrName=qnrList.map(qnr => qnr.qNRName)[0]
-
-            fetchAnswerSheetList(qnrList.map(qnr => qnr.id)[0]); // 在成功获取QNR列表后调用获取AnswerSheet列表的函数
+            //qnrName=qnrList.map(qnr => qnr.qNRName)[0]
+            $('#table #tbody').html('');
+            qnrList.forEach(qnr => {
+                fetchAnswerSheetList(qnr.id,qnr.qNRName);
+            }); // 在成功获取QNR列表后调用获取AnswerSheet列表的函数
         }
     });
 };
 
-const fetchAnswerSheetList = (qnrid) => {
+const fetchAnswerSheetList = (qnrId,qnrName) => {
     let params = {
-        qNRId: qnrid
+        qNRId: qnrId,
     };
     console.log("!!!"+JSON.stringify(params));
 
@@ -44,20 +46,17 @@ const fetchAnswerSheetList = (qnrid) => {
         dataType: 'json',
         contentType: 'application/json',
         success(res) {
-            $('#table #tbody').html('');
-            answerSheetList = res.data;
             res.data.forEach((item, index) => {
                 $('#table #tbody').append(`
-          <tr>
-            <td>${index + 1}</td>
-            <td>${qnrName}</td>
-            <td>${item.respondent}</td>
-            <td>${item.answerDate}</td>
-            <td>
-              <button type="button" class="btn btn-link" onclick="seeDetailed('${item.id}','${item.qNRId}')">明细</button>
-            </td>
-          </tr>
-        `);
+                    <tr>
+                        <td>${qnrName}</td>
+                        <td>${item.respondent}</td>
+                        <td>${item.answerDate}</td>
+                        <td>
+                            <button type="button" class="btn btn-link" onclick="seeDetailed('${item.id}','${item.qNRId}')">明细</button>
+                        </td>
+                    </tr>
+                `);
             });
         }
     });

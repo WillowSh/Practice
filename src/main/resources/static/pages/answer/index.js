@@ -40,8 +40,9 @@ const fetchQuestionList = () => {
 
 
         if (item.questionType === '填空') {
+
           questionHtml += `
-            <textarea class="form-control" placeholder="请输入" rows="4" style="width: 70%;"></textarea>
+            <textarea class="form-control"  placeholder="请输入" id="textarea-${index}" rows="4" style="width: 70%;"></textarea>
           `;
           $(document).ready(() => {
             $('#problem').append(questionHtml); // 在这里编写你的代码
@@ -61,7 +62,7 @@ const fetchQuestionList = () => {
             contentType: 'application/json',
             success(answerRes) {
               if (answerRes.code === '666') {
-                const textarea = document.querySelector('.form-control');
+                const textarea = document.querySelector(`#textarea-${index}`);
                 answerList=answerRes.data;
                 answer=answerList.map(asl => asl.answer)[0];
                 textarea.value = answer;
@@ -90,7 +91,7 @@ const fetchQuestionList = () => {
                   optionHtml += `
                     <div style="display: flex; align-items: center; margin-bottom: 3px;">
                       <label class="radio-inline">
-                        <input type="radio" name="${option.optionContent}" value="${optionIndex}">${option.optionContent}
+                        <input type="radio" name="${option.optionContent}" id="option-${index}" value="${optionIndex}">${option.optionContent}
                       </label>
                     </div>
                   `;
@@ -98,62 +99,63 @@ const fetchQuestionList = () => {
                   optionHtml += `
                     <div style="display: flex; align-items: center; margin-bottom: 3px;">
                       <label class="checkbox-inline">
-                        <input type="checkbox" name="${option.optionContent}" value="${optionIndex}">${option.optionContent}
+                        <input type="checkbox" name="${option.optionContent}" id="option-${index}" value="${optionIndex}">${option.optionContent}
                       </label>
                     </div>
                   `;
-                }else if (item.questionType === '矩阵') {
-
-                  optionHtml_1 += `<th>${option.optionContent}</th>\n`;
-
-                  optionHtml_2 += `<td><input type="radio" name="${option.optionContent}" /></td>\n`;
-
-                  if (optionIndex === optionRes.data.length-1) {
-                    let leftContent = item.questionContent.substring(item.questionContent.indexOf(':') + 1);
-                    optionHtml =`
-                          <div class="bottom">
-                            <table class="table">
-                              <thead>
-                                <tr>
-                                  <th></th>
-                              `+optionHtml_1+
-                               `
-                                 </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                    <td>${leftContent}</td>
-                              `+optionHtml_2+
-                                ` 
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                             `;
-                  }
-                }else{
-
-                  if(optionIndex === 0){
-                    let first = option.optionContent.substring(0,option.optionContent.indexOf("//left:"));
-                    optionHtml_1 = `<div>${first}</div>`
-                  }
-
-                  let fraction = option.optionContent.substring(option.optionContent.indexOf(':') + 1);
-                  console.log(option.optionContent)
-                  optionHtml_2 +=` <div>
-                                      <label className="radio-inline">
-                                        <input type="radio" name="${option.optionContent}"/>${fraction}
-                                      </label>
-                                    </div>`;
-                  if (optionIndex === optionRes.data.length-1) {
-                      let last = option.optionContent.substring(0,option.optionContent.indexOf("//left:"));
-                      optionHtml = `<div className="bottom" style="display: flex; align-items: center; justify-content: space-between;">`
-                                   +optionHtml_1
-                                   +optionHtml_2
-                                   +`<div>${last}</div>`
-                                   ;
-                  }
                 }
+                // else if (item.questionType === '矩阵') {
+                //
+                //   optionHtml_1 += `<th>${option.optionContent}</th>\n`;
+                //
+                //   optionHtml_2 += `<td><input type="radio" name="${option.optionContent}" /></td>\n`;
+                //
+                //   if (optionIndex === optionRes.data.length-1) {
+                //     let leftContent = item.questionContent.substring(item.questionContent.indexOf(':') + 1);
+                //     optionHtml =`
+                //           <div class="bottom">
+                //             <table class="table">
+                //               <thead>
+                //                 <tr>
+                //                   <th></th>
+                //               `+optionHtml_1+
+                //                `
+                //                  </tr>
+                //               </thead>
+                //               <tbody>
+                //                 <tr>
+                //                     <td>${leftContent}</td>
+                //               `+optionHtml_2+
+                //                 `
+                //                 </tr>
+                //               </tbody>
+                //             </table>
+                //           </div>
+                //              `;
+                //   }
+                // }else{
+                //
+                //   if(optionIndex === 0){
+                //     let first = option.optionContent.substring(0,option.optionContent.indexOf("//left:"));
+                //     optionHtml_1 = `<div>${first}</div>`
+                //   }
+                //
+                //   let fraction = option.optionContent.substring(option.optionContent.indexOf(':') + 1);
+                //   console.log(option.optionContent)
+                //   optionHtml_2 +=` <div>
+                //                       <label className="radio-inline">
+                //                         <input type="radio" name="${option.optionContent}"/>${fraction}
+                //                       </label>
+                //                     </div>`;
+                //   if (optionIndex === optionRes.data.length-1) {
+                //       let last = option.optionContent.substring(0,option.optionContent.indexOf("//left:"));
+                //       optionHtml = `<div className="bottom" style="display: flex; align-items: center; justify-content: space-between;">`
+                //                    +optionHtml_1
+                //                    +optionHtml_2
+                //                    +`<div>${last}</div>`
+                //                    ;
+                //   }
+                // }
 
                 console.log("answer:"+option.optionContent)
                 // Compare option with answer
@@ -175,16 +177,15 @@ const fetchQuestionList = () => {
                      /* const elementId = `#question${index + 1} [value="${optionIndex}"]`;
                       $(elementId).prop('checked', true);*/
                       // 假设 optionContent 是选项的内容，例如 "适合"、"有点适合"、"不太适合"
-                      const checkboxName = option.optionContent;
                       let choose_type = "";
                         // 获取具有指定名称和值的复选框元素
-                      if(item.questionType === '多选'){
-                        choose_type = "checkbox"
-                      }else{
-                        choose_type = "radio"
-                      }
+                      // if(item.questionType === '多选'){
+                      //   choose_type = "checkbox"
+                      // }else{
+                      //   choose_type = "radio"
+                      // }
 
-                      const chooseTerm = document.querySelector(`input[type=${choose_type}][value="${optionIndex}"]`);
+                      const chooseTerm = document.querySelector(`#option-${index}[value="${optionIndex}"]`);
                        // 将复选框设置为选中状态
                       chooseTerm.checked = true;
 
