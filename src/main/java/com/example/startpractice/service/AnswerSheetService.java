@@ -23,6 +23,13 @@ public class AnswerSheetService {
         return result;
     }
 
+    public int queryASForStat(AnswerSheetEntity answerSheetEntity){
+
+        List<AnswerSheetEntity> result=answerSheetEntityMapper.queryAnswerSheetList(answerSheetEntity);
+        return result.size();
+    }
+
+
     public List<AnswerSheetEntity> queryAnswerSheet(AnswerSheetEntity answerSheetEntity){
 
         List<AnswerSheetEntity> result=answerSheetEntityMapper.queryAnswerSheet(answerSheetEntity);

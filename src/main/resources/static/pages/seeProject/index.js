@@ -67,7 +67,7 @@ const seeQuestionnaire = (id) =>{
 }
 
 const seePreview = (id) =>{
-  location.href = '/pages/answerSheet/index.html?qNRId='+id
+  location.href = '/pages/answerLink/index.html?qNRId='+id
 }
 const onRelease = (id) =>{
 

@@ -2,11 +2,9 @@ package com.example.startpractice.service;
 
 import com.example.startpractice.dao.AnswerEntityMapper;
 import com.example.startpractice.dao.entity.AnswerEntity;
-import com.example.startpractice.dao.entity.AnswerSheetEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 @Service
 public class AnswerService {
@@ -23,6 +21,12 @@ public class AnswerService {
 
         List<AnswerEntity> result=answerEntityMapper.queryAnswerList2(answerEntity);
         return result;
+    }
+
+    public int queryAnswerForStat(AnswerEntity answerEntity){
+
+        List<AnswerEntity> result=answerEntityMapper.queryAnswerForStat(answerEntity);
+        return result.size();
     }
 
     public int addAnswerInfo(AnswerEntity answerEntity){
