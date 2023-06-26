@@ -330,7 +330,7 @@ const singleChoiceEditFinish = (problemIndex) => {
     success(res) {
       alert('成功！')
     }
-  })
+  });
   $(`#question${problemIndex} .bottom`).css('display', 'none')
   $(`#question${problemIndex} .bottom2`).css('display', 'inline')
   $(`#question${problemIndex} #questionTitle`).text(`${problemIndex + 1}.${problem[problemIndex].problemName}`)
@@ -386,11 +386,11 @@ const handleAddMultipleChoice = () => {
           </div>
         </div>
         <div>
-          <button type="button" class="btn btn-link btn-add-option" onClick="multipleChoiceAddOption(${problem.length})">添加选项</button>
+          <button type="button" class="btn btn-link btn-add-option" onclick="multipleChoiceAddOption(${problem.length})">添加选项</button>
         </div>
         <div class="btn-group">
           <button type="button" id="cancelEdit" class="btn btn-default" onclick="cancelEdit(${problem.length})">取消编辑</button>
-          <button type="button" id="editFinish" class="btn btn-default" onClick="multipleChoiceEditFinish(${problem.length})">完成编辑</button>
+          <button type="button" id="editFinish" class="btn btn-default" onclick="multipleChoiceEditFinish(${problem.length})">完成编辑</button>
         </div>
       </div>
       <div class="bottom2" style="display: none;">

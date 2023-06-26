@@ -22,4 +22,11 @@
         FROM answer_info
         WHERE question_id= #{questionId,jdbcType=VARCHAR} AND as_id= #{asId,jdbcType=VARCHAR}
     </select>
+
+    <insert id="insert" parameterType="com.example.startpractice.dao.entity.AnswerEntity">
+
+        insert into answer_info (question_id, answer, as_id)
+        values (#{questionId,jdbcType=VARCHAR},
+                #{answer,jdbcType=VARCHAR}, #{asId,jdbcType=VARCHAR})
+    </insert>
 </mapper>

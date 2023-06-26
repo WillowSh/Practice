@@ -2,6 +2,27 @@ let questionList = [];
 const urlParams = new URLSearchParams(window.location.search);
 const qNRId = urlParams.get('qNRId');
 onload = () => {
+  let qNRName = '';
+  let qNRContent='';
+  let qnrParams = {
+    id:qNRId,
+  };
+
+  $.ajax({
+    url: API_BASE_URL + '/queryQNR',
+    type: "POST",
+    data: JSON.stringify(qnrParams),
+    dataType: "json",
+    contentType: "application/json",
+    success(res) {
+      qNRName=res.data[0].qNRName;
+      qNRContent=res.data[0].qNRContent;
+      document.getElementById('qnrTitle').innerHTML = qNRName;
+      document.getElementById('qnrContent').innerHTML = qNRContent;
+    }
+  })
+
+
   fetchQuestionList();
 };
 

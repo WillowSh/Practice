@@ -17,15 +17,18 @@
     <h3 class="questionnaire-title">
         <span id="qnrTitle"></span>
     </h3>
+    <div class="container2">
     <h4 class="respondent-information">
         答卷人：<span id="respondent"></span>
+        <input type="text" id="respondentName" placeholder="请输入您的名字">
     </h4>
     <h4 class="questionnaire-description">
         说明:<span id="qnrContent"></span>
     </h4>
+    </div>
     <div class="problem" id="problem"></div>
     <div class="btn-div">
-        <button type="button" class="btn btn-primary">提 交</button>
+        <button type="button" class="btn btn-primary" onclick="handleSubmit()">提 交</button>
     </div>
 </div>
 <script type="module" src="../../utils/index.js"></script>

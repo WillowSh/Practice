@@ -9,6 +9,13 @@ body {
     margin: 40px 0;
 }
 
+.container2 {
+    height: 60px; /* 调整高度为100像素，根据需要进行调整 */
+}.respondent-information,
+ .questionnaire-description {
+     height: 100%; /* 继承父容器的高度 */
+ }
+
 .questionnaire-title {
     text-align: center;
 }
@@ -27,7 +34,9 @@ body {
     float: left;
     width: 70%; /* 调整宽度适配页面布局 */
 }
-
+#respondentName {
+    font-size: 16px; /* 调整字体大小为14像素 */
+}
 
 
 .question {

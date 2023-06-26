@@ -17,4 +17,17 @@
         WHERE qnr_id= #{qNRId,jdbcType=VARCHAR}
     </select>
 
+    <select id="queryAnswerSheet" parameterType="java.lang.String" resultType="com.example.startpractice.dao.entity.AnswerSheetEntity">
+        SELECT id , respondent, qnr_id as "qNRId", answer_date as "answerDate"
+        FROM as_info
+        WHERE id= #{id,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insert" parameterType="com.example.startpractice.dao.entity.AnswerSheetEntity">
+
+        insert into as_info (id, respondent, qnr_id , answer_date)
+        values (#{id,jdbcType=VARCHAR}, #{respondent,jdbcType=VARCHAR},
+                #{qNRId,jdbcType=VARCHAR}, #{answerDate,jdbcType=TIMESTAMP})
+    </insert>
+
 </mapper>

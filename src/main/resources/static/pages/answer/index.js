@@ -1,12 +1,50 @@
 let questionList = [];
 let answerList=[];
 let answer=[];
+const urlParams = new URLSearchParams(window.location.search);
+let asId = urlParams.get('asId');
+const qNRId = urlParams.get('qNRId');
+
 onload = () => {
+  let qNRName = '';
+  let qNRContent='';
+  let respondent='';
+  let qnrParams = {
+    id:qNRId,
+  };
+
+  $.ajax({
+    url: API_BASE_URL + '/queryQNR',
+    type: "POST",
+    data: JSON.stringify(qnrParams),
+    dataType: "json",
+    contentType: "application/json",
+    success(res) {
+      qNRName=res.data[0].qNRName;
+      qNRContent=res.data[0].qNRContent;
+      document.getElementById('qnrTitle').innerHTML = qNRName;
+      document.getElementById('qnrContent').innerHTML = qNRContent;
+    }
+  })
+  let resParams = {
+    id:asId,
+  };
+
+  $.ajax({
+    url: API_BASE_URL + '/queryAnswerSheet',
+    type: "POST",
+    data: JSON.stringify(resParams),
+    dataType: "json",
+    contentType: "application/json",
+    success(res) {
+      respondent=res.data[0].respondent;
+      document.getElementById('respondent').innerHTML = respondent;
+    }
+  })
+
   fetchQuestionList();
 };
-const urlParams = new URLSearchParams(window.location.search);
-const asId = urlParams.get('asId');
-const qNRId = urlParams.get('qNRId');
+
 
 const fetchQuestionList = () => {
   let params = {
