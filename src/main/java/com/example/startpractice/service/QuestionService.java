@@ -38,4 +38,10 @@ public class QuestionService {
         List<QuestionEntity> result=questionEntityMapper.queryQuestionList(questionEntity);
         return result;
     }
+
+    public List<QuestionEntity> queryQuestionListForStat(QuestionEntity questionEntity){
+
+        List<QuestionEntity> result=questionEntityMapper.queryQuestionListForStat(questionEntity);
+        return result;
+    }
 }

@@ -20,4 +20,6 @@ public interface QuestionEntityMapper {
     int modifyQuestionInfo(QuestionEntity questionEntity);
 
     List<QuestionEntity> queryQuestionList(QuestionEntity questionEntity);
+
+    List<QuestionEntity> queryQuestionListForStat(QuestionEntity questionEntity);
 }
