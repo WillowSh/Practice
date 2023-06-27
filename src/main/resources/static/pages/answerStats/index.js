@@ -46,13 +46,14 @@ const fetchQuestionListStat = () =>{
         dataType: 'json',
         contentType: 'application/json',
         success(res) {
-            ASForStat[0]=res.data;
+            ASForStat[0]+=res.data;
         }
     })
 }
 
 
 const fetchQuestionList = () => {
+
     let params = {
         qNRId: qNRId
     };
@@ -109,10 +110,14 @@ const fetchAnswerStatForSame = async (questionId) =>{
 }
 
 const fetchAnswerStat = async (questionId) => {
+
+
     let optionParams = {
         questionId: questionId,
     };
 
+    optionContentList=[];
+    answerForStat=[];
     const optionListRes = await $.ajax({
         url: API_BASE_URL + '/queryOptionList',
         type: 'POST',
@@ -124,6 +129,7 @@ const fetchAnswerStat = async (questionId) => {
     const optionList = optionListRes.data;
 
     const promises = optionList.map(async (optionItem, index) => {
+
         let answerParams = {
             answer: optionItem.optionContent,
             questionId: questionId,
@@ -138,8 +144,6 @@ const fetchAnswerStat = async (questionId) => {
         });
 
         const ratio = (answerRes.data / ASForStat[0]) * 100;
-        optionContentList=null;
-        answerForStat=null;
         optionContentList[index]=optionItem.optionContent;
         answerForStat[index]=answerRes.data;
         ratioList.push(ratio);
@@ -324,7 +328,7 @@ const fetchTableForSame = async (questionId, tbodyId, buttonId) => {
             dataType: 'json',
             contentType: 'application/json',
         });
-
+        //获取问题的题目内容
         const questionContent = questionListResponse.data[0].questionContent;
 
         const questionContentParams = {
@@ -338,30 +342,36 @@ const fetchTableForSame = async (questionId, tbodyId, buttonId) => {
             dataType: 'json',
             contentType: 'application/json',
         });
-
+        //获取有相同问题内容的题目
         const questions = questionContentResponse.data;
 
-        const optionCon = [];
-        const answerSt = [];
+        const optionCon = [];   //
+        const answerSt = [];    //
 
         let flag = 0;
-        for (let i = 0; i < questions.length; i++) {
+
+        //获取选项列表
+        const optionParams = {
+            questionId: questionId,
+        };
+
+        const optionResponse = await $.ajax({
+            url: API_BASE_URL + '/queryOptionList',
+            type: 'POST',
+            data: JSON.stringify(optionParams),
+            dataType: 'json',
+            contentType: 'application/json',
+        });
+
+        const optionList = optionResponse.data;
+        console.log(optionList)
+
+
+        for (let i = 0; i < questions.length; i++) {   //对有相同题目内容的问题循环
             const questionItem = questions[i];
-            const optionParams = {
-                questionId: questionItem.id,
-            };
+            //获取这个问题的选项列表
 
-            const optionResponse = await $.ajax({
-                url: API_BASE_URL + '/queryOptionList',
-                type: 'POST',
-                data: JSON.stringify(optionParams),
-                dataType: 'json',
-                contentType: 'application/json',
-            });
-
-            const optionList = optionResponse.data;
-
-            optionList.forEach((optionItem, index) => {
+            optionList.forEach((optionItem, index) => {  //对每个选项
                 const answerParams = {
                     answer: optionItem.optionContent,
                     questionId: questionItem.id,
@@ -383,48 +393,60 @@ const fetchTableForSame = async (questionId, tbodyId, buttonId) => {
                             answerSt[optionConIndex] += answerRes.data;
 
                         }
+                        console.log(answerSt);
+
+                        console.log(optionCon.length+"len")
+
+                        if(i === questions.length-1 && index === optionList.length -1){
+                            console.log(i);
+                            console.log(optionCon.length+"lenjinru")
+                            for (let i = 0; i < answerSt.length; i++) {
+                                const optionConItem = optionCon[i];
+                                const answerStItem = answerSt[i];
+
+                                console.log("answerStItem:"+answerStItem);
+                                /*console.log(answerSt);*/
+                                console.log("打印")
+                                $(`#${tbodyId}`).append(`
+                                <tr>
+                                  <td>${optionConItem}</td>
+                                  <td>${answerStItem}</td>
+                                  <td id="td">
+                                    <p>
+                                      <style>
+                                        meter {
+                                          width: 300px; /* 设置进度条的宽度 */
+                                          height: 20px;
+                                        }
+                                        meter::-webkit-meter-optimum-value,
+                                        meter::-webkit-meter-suboptimum-value,
+                                        meter::-webkit-meter-even-less-good-value {
+                                          background: #0066ff; /* 设置进度条的优化值、次优化值和更差值的颜色 */
+                                        }
+                                      </style>
+                                      <meter min="0" max="${ASForStat[0]}" value="${answerStItem}"></meter>
+                      <!--                <span> ratio % </span>  -->
+                                    </p>
+                                  </td>
+                                </tr>
+                              `);
+
+                            }
+
+
+                        }
+
                     },
                 });
             });
 
-            if(i === questions.length -1){
-                flag = 1;
-            }
+
         }
 
         $(`#${tbodyId}`).html('');
-      if(flag === 1){
-          for (let i = 0; i < optionCon.length; i++) {
-              const optionConItem = optionCon[i];
-              const answerStItem = answerSt[i];
 
-              console.log(answerStItem);
-              console.log(answerSt);
-              $(`#${tbodyId}`).append(`
-        <tr>
-          <td>${optionConItem}</td>
-          <td>${answerStItem}</td>
-          <td id="td">
-            <p>
-              <style>
-                meter {
-                  width: 300px; /* 设置进度条的宽度 */
-                  height: 20px;
-                }
-                meter::-webkit-meter-optimum-value,
-                meter::-webkit-meter-suboptimum-value,
-                meter::-webkit-meter-even-less-good-value {
-                  background: #0066ff; /* 设置进度条的优化值、次优化值和更差值的颜色 */
-                }
-              </style>
-              <meter min="0" max="${ASForStat[0]}" value="${answerStItem}"></meter>
-              <span> ratio % </span>
-            </p>
-          </td>
-        </tr>
-      `);
-          }
-      }
+
+
 
     } catch (error) {
         console.error(error);

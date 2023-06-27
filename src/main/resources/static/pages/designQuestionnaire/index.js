@@ -3,7 +3,7 @@ let QNR = {}; // 初始化 project 对象
 const urlParams = new URLSearchParams(window.location.search);
 const qNRId = urlParams.get('qNRId');
 let questionnaireTitle = 'qNRName';
-let questionnaireDescription = '问卷说明';
+let questionnaireDescription = '';
 onload= () =>{
 
   let qNRName = '';
@@ -19,8 +19,9 @@ onload= () =>{
     contentType: "application/json",
     success(res) {
       questionnaireTitle=res.data[0].qNRName;
+      questionnaireDescription=res.data[0].qNRContent;
       document.getElementById('qnrTitle').innerHTML = questionnaireTitle;
-      document.getElementById('qnrContent').innerHTML = res.data[0].qNRContent;
+      document.getElementById('qnrContent').innerHTML = questionnaireDescription;
     }
   })
 
