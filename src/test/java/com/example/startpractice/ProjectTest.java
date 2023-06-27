@@ -21,13 +21,13 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class StartPracticeApplicationTests {
+class ProjectTest {
 
   //  @Test
     void contextLoads() {
     }
 
-    Logger log = Logger.getLogger(StartPracticeApplicationTests.class);
+    Logger log = Logger.getLogger(ProjectTest.class);
     @Test
     public void queryUserList() throws Exception {
         String resource = "mybatis-config.xml";

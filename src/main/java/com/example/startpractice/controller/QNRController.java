@@ -42,6 +42,7 @@ public class QNRController {
     public HttpResponseEntity queryQNRList(@RequestBody QNREntity qnrEntity){
 
         HttpResponseEntity httpResponseEntity=new HttpResponseEntity();
+        System.out.println(qnrEntity);
         try {
             List<QNREntity> hasQNR=qnrService.queryQNRList(qnrEntity);
             if(CollectionUtils.isEmpty(hasQNR)){
