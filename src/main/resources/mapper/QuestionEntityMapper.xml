@@ -37,11 +37,25 @@
         WHERE qnr_id= #{qNRId,jdbcType=VARCHAR}
     </select>
 
+    <select id="queryQuestionList2" parameterType="java.lang.String" resultType="com.example.startpractice.dao.entity.QuestionEntity">
+        SELECT id,question_type as "questionType", question_content as "questionContent", qnr_id as "qNRId"
+        FROM question_info
+        WHERE id= #{id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="queryQuestionContent" parameterType="java.lang.String" resultType="com.example.startpractice.dao.entity.QuestionEntity">
+        SELECT id,question_type as "questionType", question_content as "questionContent", qnr_id as "qNRId"
+        FROM question_info
+        WHERE question_content= #{questionContent,jdbcType=VARCHAR}
+    </select>
+
     <select id="queryQuestionListForStat" parameterType="java.lang.String" resultType="com.example.startpractice.dao.entity.QuestionEntity">
         SELECT id,question_type as "questionType", question_content as "questionContent", qnr_id as "qNRId"
         FROM question_info
         WHERE qnr_id= #{qNRId,jdbcType=VARCHAR} AND (question_type = "单选" OR question_type = "多选")
     </select>
+
+
 
 
 </mapper>

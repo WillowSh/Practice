@@ -12,6 +12,23 @@ body {
 .questionnaire-title {
     text-align: center;
 }
+#optionContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+#questionWrapper {
+    display: flex;
+    align-items: center;
+}
+
+#questionNumber {
+    margin-right: 10px; /* 可根据需要调整题号和题目之间的间距 */
+}
+
+#buttonWrapper {
+    margin-left: auto;
+}
 
 .questionnaire-description {
     border-bottom: 1px dashed #CCCCCC;
@@ -27,6 +44,7 @@ body {
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
+    margin: 20px 0 10px 0;
 }
 
 /*
@@ -50,13 +68,13 @@ body {
     font-size: 13px;
 }
 */
-/*
+
 
 .btn-div {
     text-align: right;
     margin: 40px 0 20px 0;
 }
-
+/*
 .btn {
     padding: 6px 40px !important;
 }

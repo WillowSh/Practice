@@ -39,6 +39,18 @@ public class QuestionService {
         return result;
     }
 
+    public List<QuestionEntity> queryQuestionList2(QuestionEntity questionEntity){
+
+        List<QuestionEntity> result=questionEntityMapper.queryQuestionList2(questionEntity);
+        return result;
+    }
+    public List<QuestionEntity> queryQuestionContent(QuestionEntity questionEntity){
+
+        List<QuestionEntity> result=questionEntityMapper.queryQuestionContent(questionEntity);
+        return result;
+    }
+
+
     public List<QuestionEntity> queryQuestionListForStat(QuestionEntity questionEntity){
 
         List<QuestionEntity> result=questionEntityMapper.queryQuestionListForStat(questionEntity);

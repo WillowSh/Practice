@@ -47,9 +47,12 @@ public class UserService {
     public int deleteUserById(UserEntity userEntity){
         int userResult=userEntityMapper.deleteUserById(userEntity);
         return userResult;
-
-
     }
 
+    ////为JMeter测试而创造的方法
+    public int deleteUserByName(UserEntity userEntity){
+        int userResult=userEntityMapper.deleteUserByName(userEntity);
+        return userResult;
+    }
 
 }
