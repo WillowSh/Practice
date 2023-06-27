@@ -18,6 +18,17 @@ body {
     padding: 0 0 20px 10px;
     margin: 20px 0;
 }
+
+.questionTable th,
+.questionTable td {
+    text-align: center;
+}
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
 /*
 
 .question {

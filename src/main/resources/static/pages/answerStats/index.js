@@ -1,6 +1,11 @@
 let questionList = [];
 const urlParams = new URLSearchParams(window.location.search);
 const qNRId = urlParams.get('qNRId');
+let ASForStat=[];
+let optionContentList=[];
+let answerForStat=[];
+let ratioList=[];
+
 onload = () => {
     let qNRName = '';
     let qNRContent = '';
@@ -19,11 +24,32 @@ onload = () => {
             qNRName = res.data[0].qNRName;
             qNRContent = res.data[0].qNRContent;
             document.getElementById('qnrTitle').innerHTML = qNRName;
+            document.getElementById('qnrContent').innerHTML = qNRContent;
         }
     })
 
+    fetchQuestionListStat();
     fetchQuestionList();
 };
+
+const fetchQuestionListStat = () =>{
+
+    let params = {
+        qNRId: qNRId
+    };
+
+    $.ajax({
+        url: API_BASE_URL + '/queryASForStat',
+        type: 'POST',
+        data: JSON.stringify(params),
+        dataType: 'json',
+        contentType: 'application/json',
+        success(res) {
+            ASForStat[0]=res.data;
+        }
+    })
+}
+
 
 const fetchQuestionList = () => {
     let params = {
@@ -31,7 +57,7 @@ const fetchQuestionList = () => {
     };
 
     $.ajax({
-        url: API_BASE_URL + '/queryQuestionList',
+        url: API_BASE_URL + '/queryQuestionListForStat',
         type: 'POST',
         data: JSON.stringify(params),
         dataType: 'json',
@@ -41,57 +67,94 @@ const fetchQuestionList = () => {
             questionList = res.data;
 
             res.data.forEach((item, index) => {
+                const questionId = item.id;
+                const tableId = `questionTable-${questionId}`;
+                const tbodyId = `tbody-${questionId}`;
+                const buttonId = `button-${questionId}`;
+                const div1Id = `div1-${questionId}`;
+
                 $(`#problem`).append(`
                    <div id="optionTitle">第${index+1}题:${item.questionContent}</div>
-                   <div>
-                    <table class="tablesorter" id="ques-"${index}>
-                      <thead>
-                       <tr>
-                         <th>选项</th>
-                         <th>小计</th>
-                         <th>比例</th>
-                       </tr>
-                      </thead>
-                      <tbody>
-                
-                      </tbody>
-                    </table>
+                   <div id="${div1Id}">
+                    
+                    <div class="buttons" id="${buttonId}">
+                      </div>
                     </div>
                   `)
-                  setOriginalInfo(item,index);
-
+                setOriginalInfo(questionId, tbodyId, buttonId, div1Id, tableId);
             });
         }
     });
 }
-
-const setOriginalInfo = (item,index) =>{
-    /*let params = {
-        projectId: projectId,
-        questionId: item.id
+const fetchAnswerStat = async (questionId) => {
+    let optionParams = {
+        questionId: questionId,
     };
 
-    $.ajax({
+    const optionListRes = await $.ajax({
         url: API_BASE_URL + '/queryOptionList',
         type: 'POST',
-        data: JSON.stringify(params),
+        data: JSON.stringify(optionParams),
         dataType: 'json',
         contentType: 'application/json',
-        success(res) {
-            let optionList = res.data;
-                res.date.map((item, index) => {
-                    $(`#problem tbody`).append(`
-                    <tr class="tr${index}">
-                      <td>${item}</td>
-                     </tr>
-                     `)});
+    });
 
-        }
-    });*/
-    for(let i = 0; i < 3; i++){
-        $(`#problem tbody `).append(`
-                      <tr>选项${i+1}</tr>
-                     `);
+    const optionList = optionListRes.data;
+
+    for (let index = 0; index < optionList.length; index++) {
+        const optionItem = optionList[index];
+        let answerParams = {
+            answer: optionItem.optionContent,
+            questionId: questionId,
+        };
+
+        const answerRes = await $.ajax({
+            url: API_BASE_URL + '/queryAnswerForStat',
+            type: 'POST',
+            data: JSON.stringify(answerParams),
+            dataType: 'json',
+            contentType: 'application/json',
+        });
+
+        const ratio = (answerRes.data / ASForStat[0]) * 100;
+        optionContentList[index] = optionItem.optionContent;
+        answerForStat[index] = answerRes.data;
+        ratioList.push(ratio);
     }
+};
 
+
+const setOriginalInfo = (questionId, tbodyId, buttonId, div1Id, tableId) =>{
+    $(`#${buttonId}`).append(`
+                         <button onclick="showTable('${div1Id}','${tableId}','${tbodyId}','${buttonId}','${questionId}')">表格</button>
+                         <button onclick="showPieChart('${questionId}')">饼状</button>
+                         <button onclick="showBarChart('${div1Id}','${buttonId}','${questionId}')">柱状</button>
+                        `)
 }
+const showBarChart = (div1Id, buttonId, id) =>{
+    fetchAnswerStat(id);
+    $(`#${div1Id}`).append(`
+        <div id="${id}" style="width: 500px;height:400px;"></div>
+    `);
+
+    // echarts initialization and set options
+    const myChart = echarts.init(document.getElementById(id));
+    const option = {
+        xAxis: {
+            type: 'category',
+            data: optionContentList
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [
+            {
+                data: answerForStat,
+                type: 'bar'
+            }
+        ]
+    };
+
+    myChart.setOption(option);
+};
+

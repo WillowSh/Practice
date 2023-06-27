@@ -101,4 +101,25 @@ public class QuestionController {
         return httpResponseEntity;
     }
 
+    @RequestMapping(value = "/queryQuestionListForStat",method = RequestMethod.POST,headers = "Accept=application/json")
+    public HttpResponseEntity queryQuestionListForStat(@RequestBody QuestionEntity questionEntity){
+
+        HttpResponseEntity httpResponseEntity=new HttpResponseEntity();
+        try {
+            List<QuestionEntity> hasQuestion=questionService.queryQuestionListForStat(questionEntity);
+            if(CollectionUtils.isEmpty(hasQuestion)){
+                httpResponseEntity.setCode("0");
+                httpResponseEntity.setData(null);
+                httpResponseEntity.setMessage("无信息");
+            }else {
+                httpResponseEntity.setCode("666");
+                httpResponseEntity.setData(hasQuestion);
+                httpResponseEntity.setMessage("查询成功");
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return httpResponseEntity;
+    }
 }

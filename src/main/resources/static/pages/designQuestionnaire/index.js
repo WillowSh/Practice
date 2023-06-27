@@ -18,8 +18,9 @@ onload= () =>{
     dataType: "json",
     contentType: "application/json",
     success(res) {
-      questionnaireTitle=res.data[0].qNRName
+      questionnaireTitle=res.data[0].qNRName;
       document.getElementById('qnrTitle').innerHTML = questionnaireTitle;
+      document.getElementById('qnrContent').innerHTML = res.data[0].qNRContent;
     }
   })
 
