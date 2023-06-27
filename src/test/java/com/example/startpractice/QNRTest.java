@@ -108,8 +108,8 @@ public class QNRTest {
         QNREntity qnrEntity_2 = new QNREntity();
         qnrEntity_2.setId("noId");
 
-        HttpResponseEntity httpResponseEntity = qnrController.deleteUserById(qnrEntity);
-        HttpResponseEntity httpResponseEntity_2 = qnrController.deleteUserById(qnrEntity_2);
+        HttpResponseEntity httpResponseEntity = qnrController.deleteQNRById(qnrEntity);
+        HttpResponseEntity httpResponseEntity_2 = qnrController.deleteQNRById(qnrEntity_2);
 
         System.out.println(httpResponseEntity.getCode()+httpResponseEntity_2.getCode());
         if(httpResponseEntity.getCode().equals("666") && httpResponseEntity_2.getCode().equals("0"))
