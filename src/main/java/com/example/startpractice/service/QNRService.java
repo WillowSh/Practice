@@ -19,14 +19,14 @@ public class QNRService {
 
         //qnrEntity.setId(UUIDUtil.getOneUUID());
         qnrEntity.setCreationDate(new Date());
-
+        qnrEntity.setIsDeleted("Exist");
         int result= qnrEntityMapper.insert(qnrEntity);
         return result;
     }
 
     //查询项目列表
     public List<QNREntity> queryQNRList(QNREntity qnrEntity){
-
+        qnrEntity.setIsDeleted("Exist");
         List<QNREntity> result=qnrEntityMapper.queryQNRList(qnrEntity);
         return result;
     }
@@ -37,6 +37,7 @@ public class QNRService {
     }
 
     public int deleteQNRById(QNREntity qnrEntity){
+        qnrEntity.setIsDeleted("Deleted");
         int qnrResult=qnrEntityMapper.deleteQNRById(qnrEntity);
         return qnrResult;
 

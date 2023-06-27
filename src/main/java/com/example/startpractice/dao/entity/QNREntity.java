@@ -15,6 +15,8 @@ public class QNREntity implements Serializable {
     private String createdBy;
     private String userId;
 
+    private String isDeleted;
+
     public String getId() {
         return id;
     }
@@ -95,6 +97,14 @@ public class QNREntity implements Serializable {
         this.userId = userId;
     }
 
+    public String getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(String isDeleted) {
+        this.isDeleted = isDeleted;
+    }
+
     @Override
     public String toString() {
         return "QNREntity{" +
@@ -108,6 +118,7 @@ public class QNREntity implements Serializable {
                 ", projectId='" + projectId + '\'' +
                 ", createdBy='" + createdBy + '\'' +
                 ", userId='" + userId + '\'' +
+                ", isDeleted='" + isDeleted + '\'' +
                 '}';
     }
 }
