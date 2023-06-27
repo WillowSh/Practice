@@ -70,7 +70,7 @@ const seePreview = (id) =>{
   location.href = '/pages/answerLink/index.html?qNRId='+id
 }
 const onRelease = (id) =>{
-
+   alert("成功发布该项目!\n项目链接为:" + "http://127.0.0.1:8081/pages/answerLink/index.html?qNRId=" + id);
 }
 
 const onDelete = (id) =>{

@@ -100,6 +100,49 @@ public class QuestionController {
         }
         return httpResponseEntity;
     }
+    @RequestMapping(value = "/queryQuestionList2",method = RequestMethod.POST,headers = "Accept=application/json")
+    public HttpResponseEntity queryQuestionList2(@RequestBody QuestionEntity questionEntity){
+
+        HttpResponseEntity httpResponseEntity=new HttpResponseEntity();
+        try {
+            List<QuestionEntity> hasQuestion=questionService.queryQuestionList2(questionEntity);
+            if(CollectionUtils.isEmpty(hasQuestion)){
+                httpResponseEntity.setCode("0");
+                httpResponseEntity.setData(null);
+                httpResponseEntity.setMessage("无信息");
+            }else {
+                httpResponseEntity.setCode("666");
+                httpResponseEntity.setData(hasQuestion);
+                httpResponseEntity.setMessage("查询成功");
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return httpResponseEntity;
+    }
+
+    @RequestMapping(value = "/queryQuestionContent",method = RequestMethod.POST,headers = "Accept=application/json")
+    public HttpResponseEntity queryQuestionContent(@RequestBody QuestionEntity questionEntity){
+
+        HttpResponseEntity httpResponseEntity=new HttpResponseEntity();
+        try {
+            List<QuestionEntity> hasQuestion=questionService.queryQuestionContent(questionEntity);
+            if(CollectionUtils.isEmpty(hasQuestion)){
+                httpResponseEntity.setCode("0");
+                httpResponseEntity.setData(null);
+                httpResponseEntity.setMessage("无信息");
+            }else {
+                httpResponseEntity.setCode("666");
+                httpResponseEntity.setData(hasQuestion);
+                httpResponseEntity.setMessage("查询成功");
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return httpResponseEntity;
+    }
 
     @RequestMapping(value = "/queryQuestionListForStat",method = RequestMethod.POST,headers = "Accept=application/json")
     public HttpResponseEntity queryQuestionListForStat(@RequestBody QuestionEntity questionEntity){

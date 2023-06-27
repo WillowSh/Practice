@@ -22,6 +22,10 @@ public interface UserEntityMapper {
     //根据id删除用户信息
     int deleteUserById(UserEntity userEntity);
 
+
+    //为JMeter测试而创造的方法
+    int deleteUserByName(UserEntity userEntity);
+
     //编辑用户信息
     int modifyUserInfo(UserEntity userEntity);
 

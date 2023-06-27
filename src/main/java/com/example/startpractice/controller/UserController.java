@@ -137,4 +137,30 @@ public class UserController {
         return httpResponseEntity;
     }
 
+    //为JMeter测试而创造的方法
+    @RequestMapping(value = "/deleteUserByName",method = RequestMethod.POST,headers = "Accept=application/json")
+    public HttpResponseEntity deleteUserByName(@RequestBody UserEntity userEntity){
+
+        System.out.println(userEntity);
+        HttpResponseEntity httpResponseEntity=new HttpResponseEntity();
+        try {
+            int result=userService.deleteUserByName(userEntity);
+            if(result!=0){
+                httpResponseEntity.setCode("666");
+                httpResponseEntity.setData(result);
+                httpResponseEntity.setMessage("删除成功");
+            }else {
+                httpResponseEntity.setCode("0");
+                httpResponseEntity.setData(0);
+                httpResponseEntity.setMessage("删除失败");
+            }
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return httpResponseEntity;
+    }
+
+
 }
