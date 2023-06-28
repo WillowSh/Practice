@@ -424,7 +424,7 @@ const multipleChoiceDelOption = (problemIndex, optionIndex) => {
 
 const multipleChoiceEditFinish = (problemIndex) => {
   problem[problemIndex].problemType = "多选";
-  problem[problemIndex].problemId = Date.now().toString();
+  problem[problemIndex].problemId = generateUniqueID('ques')
   let params = {
     id: problem[problemIndex].problemId,
     questionContent: problem[problemIndex].problemName,
@@ -492,12 +492,13 @@ const fillBlanksEditFinish = (problemIndex) => {
     <div style="border: 1px solid #CCCCCC; width: 50%; height: 70px;"></div>
   `)
 
-  problem[problemIndex].problemId = Date.now().toString();
+  problem[problemIndex].problemId = generateUniqueID('ques');
   let params = {
     id: problem[problemIndex].problemId,
     questionContent: problem[problemIndex].problemName,
     //$('#problemName').val(),
     questionType: "填空",
+    qNRId:qNRId
   }
   $.ajax({
     url: API_BASE_URL + '/addQuestionInfo',
@@ -600,12 +601,13 @@ const matrixEditFinish = (problemIndex) => {
     `)
   })
 
-  problem[problemIndex].problemId = Date.now().toString();
+  problem[problemIndex].problemId = generateUniqueID('ques');
   let questionContent = problem[problemIndex].problemName+ "//leftTitle:"+$('#leftTitle').val()
   let params = {
     id: problem[problemIndex].problemId,
     questionContent: questionContent,
     questionType: "矩阵",
+    qNRId:qNRId
   }
   $.ajax({
     url: API_BASE_URL + '/addQuestionInfo',
@@ -699,11 +701,12 @@ const gaugeEditFinish = (problemIndex) => {
     <div>${problem[problemIndex].option[problem[problemIndex].option.length - 1].chooseTerm}</div>
   `)
 
-  problem[problemIndex].problemId = Date.now().toString();
+  problem[problemIndex].problemId = generateUniqueID('ques');
   let params = {
     id: problem[problemIndex].problemId,
     questionContent: problem[problemIndex].problemName,
     questionType: "量表",
+    qNRId:qNRId
   }
   $.ajax({
     url: API_BASE_URL + '/addQuestionInfo',
@@ -739,6 +742,7 @@ const handleEditFinish = () => {
       console.log(res)
     }
   })
+  location.href = '/pages/questionnaire/index.html'
 }
 const handlePreview =()=>{
   location.href = '/pages/answerSheet/index.html?qNRId='+qNRId
