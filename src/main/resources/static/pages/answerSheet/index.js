@@ -80,87 +80,61 @@ const fetchQuestionList = () => {
             success(optionRes) {
               let optionHtml_1 = '';
               let optionHtml_2 = '';
-              optionRes.data.forEach((option, optionIndex) => {
-                let optionHtml = '';
+              if (item.questionType === "矩阵") {
+                matrixAnswer(questionHtml, item, optionRes.data, optionRes.length)
+              } else {
+                optionRes.data.forEach((option, optionIndex) => {
+                  let optionHtml = '';
 
-                if (item.questionType === '单选') {
-                  optionHtml += `
+                  if (item.questionType === '单选') {
+                    optionHtml += `
                     <div style="display: flex; align-items: center; margin-bottom: 3px;">
                       <label class="radio-inline">
                         <input type="radio" name="${option.optionContent}" value="${optionIndex}">${option.optionContent}
                       </label>
                     </div>
                   `;
-                } else if (item.questionType === '多选') {
-                  optionHtml += `
+                  } else if (item.questionType === '多选') {
+                    optionHtml += `
                     <div style="display: flex; align-items: center; margin-bottom: 3px;">
                       <label class="checkbox-inline">
                         <input type="checkbox" name="${option.optionContent}" value="${optionIndex}">${option.optionContent}
                       </label>
                     </div>
                   `;
-                }else if (item.questionType === '矩阵') {
+                  } else {
 
-                  optionHtml_1 += `<th>${option.optionContent}</th>\n`;
+                    if (optionIndex === 0) {
+                      let first = option.optionContent.substring(0, option.optionContent.indexOf("//left:"));
+                      optionHtml_1 = `<div>${first}</div>`
+                    }
 
-                  optionHtml_2 += `<td><input type="radio" name="${option.optionContent}" /></td>\n`;
-
-                  if (optionIndex === optionRes.data.length-1) {
-                    let leftContent = item.questionContent.substring(item.questionContent.indexOf(':') + 1);
-                    optionHtml =`
-                          <div class="bottom">
-                            <table class="table">
-                              <thead>
-                                <tr>
-                                  <th></th>
-                              `+optionHtml_1+
-                        `
-                                 </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                    <td>${leftContent}</td>
-                              `+optionHtml_2+
-                        ` 
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                             `;
-                  }
-                }else{
-
-                  if(optionIndex === 0){
-                    let first = option.optionContent.substring(0,option.optionContent.indexOf("//left:"));
-                    optionHtml_1 = `<div>${first}</div>`
-                  }
-
-                  let fraction = option.optionContent.substring(option.optionContent.indexOf(':') + 1);
-                  console.log(option.optionContent)
-                  optionHtml_2 +=` <div>
+                    let fraction = option.optionContent.substring(option.optionContent.indexOf(':') + 1);
+                    console.log(option.optionContent)
+                    optionHtml_2 += ` <div>
                                       <label className="radio-inline">
                                         <input type="radio" name="${option.optionContent}"/>${fraction}
                                       </label>
                                     </div>`;
-                  if (optionIndex === optionRes.data.length-1) {
-                    let last = option.optionContent.substring(0,option.optionContent.indexOf("//left:"));
-                    optionHtml = `<div className="bottom" style="display: flex; align-items: center; justify-content: space-between;">`
-                        +optionHtml_1
-                        +optionHtml_2
-                        +`<div>${last}</div>`
-                    ;
+                    if (optionIndex === optionRes.data.length - 1) {
+                      let last = option.optionContent.substring(0, option.optionContent.indexOf("//left:"));
+                      optionHtml = `<div className="bottom" style="display: flex; align-items: center; justify-content: space-between;">`
+                          + optionHtml_1
+                          + optionHtml_2
+                          + `<div>${last}</div>`
+                      ;
+                    }
                   }
-                }
-                questionHtml += optionHtml;
-              });
+                  questionHtml += optionHtml;
+                });
 
-              questionHtml += `
+                questionHtml += `
                   </div>
                 </div>
                 `;
-              $('#problem').append(questionHtml);
+                $('#problem').append(questionHtml);
+              }
             }
-
           });
         }
 
@@ -168,3 +142,60 @@ const fetchQuestionList = () => {
     }
   });
 };
+
+
+
+const matrixShow = (questionHtml,item,optionRes) => {
+  let leftContent = item.questionContent.substring(item.questionContent.indexOf(':') + 1);
+  const matrixArray = leftContent.split(',');
+  let optionHtml = ``;
+  let optionHtml_1 = ``;
+  let optionHtml_3 = '';
+  for (let i = 0; i < matrixArray.length; i++) {
+    console.log(matrixArray[i]);
+    let optionHtml_2 = ``;
+
+    for (let j = 0; j < optionRes.length; j++) {
+      if ( i=== 0) {
+        optionHtml_1 += `<th>${optionRes[j].optionContent}</th>\n`;
+      }
+
+      let value = optionRes[j].optionContent + "//left:" + matrixArray[i];
+      console.log(value);
+      optionHtml_2 += `<td><input type="radio" value="${value}" data-option-content="${value}"/></td>\n`;
+    }
+    optionHtml_3 += `<tr>
+                       <td>${matrixArray[i]}</td>\n`
+        + optionHtml_2
+        + `</tr>`;
+
+  }
+
+
+  optionHtml = `
+                        <div class="bottom">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th></th>
+                            ` + optionHtml_1 + `
+                               </tr>
+                            </thead>
+                            <tbody>
+                            ` + optionHtml_3 +
+      ` 
+                            </tbody>
+                          </table>
+                        </div>
+                           `;
+
+  questionHtml += optionHtml;
+  questionHtml += `
+                          </div>
+                        </div>
+                        `;
+
+  console.log(questionHtml)
+  $('#problem').append(questionHtml);
+
+}
