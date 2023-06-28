@@ -88,9 +88,10 @@ const fetchQuestionList = () => {
 
                    <div id="${div1Id}">
                     
+                    
+                    </div>
                     <div class="buttons" id="${buttonId}">
                       </div>
-                    </div>
                   `)
                 setOriginalInfo(questionId, tbodyId, buttonId, div1Id, tableId);
             });
@@ -109,10 +110,14 @@ const fetchAnswerStatForSame = async (questionId) =>{
 }
 
 const fetchAnswerStat = async (questionId) => {
+
+
     let optionParams = {
         questionId: questionId,
     };
 
+    optionContentList=[];
+    answerForStat=[];
     const optionListRes = await $.ajax({
         url: API_BASE_URL + '/queryOptionList',
         type: 'POST',
@@ -124,6 +129,7 @@ const fetchAnswerStat = async (questionId) => {
     const optionList = optionListRes.data;
 
     const promises = optionList.map(async (optionItem, index) => {
+
         let answerParams = {
             answer: optionItem.optionContent,
             questionId: questionId,
@@ -138,8 +144,6 @@ const fetchAnswerStat = async (questionId) => {
         });
 
         const ratio = (answerRes.data / ASForStat[0]) * 100;
-        optionContentList=null;
-        answerForStat=null;
         optionContentList[index]=optionItem.optionContent;
         answerForStat[index]=answerRes.data;
         ratioList.push(ratio);
@@ -152,12 +156,137 @@ const fetchAnswerStat = async (questionId) => {
 const setOriginalInfo = (questionId, tbodyId, buttonId, div1Id, tableId) =>{
     $(`#${buttonId}`).append(`
                          <button onclick="showTable('${div1Id}','${tableId}','${tbodyId}','${buttonId}','${questionId}')">表格</button>
-                         <button onclick="showPieChart('${questionId}')">饼状</button>
+                         <button onclick="showPieChart('${div1Id}','${buttonId}','${questionId}')">饼状</button>
                          <button onclick="showBarChart('${div1Id}','${buttonId}','${questionId}')">柱状</button>
+                         <button onclick="showDonutChart('${div1Id}','${buttonId}','${questionId}')">环形</button>
+                         <button onclick="showLineChart('${div1Id}','${buttonId}','${questionId}')">折线</button>
                         `)
 }
+const showLineChart = async (div1Id, buttonId, id) => {
+
+    await fetchAnswerStat(id);
+    $(`#${div1Id}`).html('');
+    $(`#${div1Id}`).append(`
+        <div id="${id}" style="width: 500px;height: 400px;"></div>
+    `);
+    const myChart = echarts.init(document.getElementById(id));
+    const option = {
+        title: {
+            text: 'Line Chart',
+            left: 'center'
+        },
+        xAxis: {
+            type: 'category',
+            data: optionContentList
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [
+            {
+                name: 'Data',
+                type: 'line',
+                data: answerForStat
+            }
+        ]
+    };
+    myChart.setOption(option);
+
+}
+const showDonutChart= async (div1Id, buttonId, id) => {
+    await fetchAnswerStat(id);
+    $(`#${div1Id}`).html('');
+    $(`#${div1Id}`).append(`
+        <div id="${id}" style="width: 500px;height: 400px;"></div>
+    `);
+    const myChart = echarts.init(document.getElementById(id));
+    const option = {
+        tooltip: {
+            trigger: 'item'
+        },
+        legend: {
+            top: '5%',
+            left: 'center'
+        },
+        series: [
+            {
+                name: 'Access From',
+                type: 'pie',
+                radius: ['40%', '70%'],
+                avoidLabelOverlap: false,
+                itemStyle: {
+                    borderRadius: 10,
+                    borderColor: '#fff',
+                    borderWidth: 2
+                },
+                label: {
+                    show: false,
+                    position: 'center'
+                },
+                emphasis: {
+                    label: {
+                        show: true,
+                        fontSize: 40,
+                        fontWeight: 'bold'
+                    }
+                },
+                labelLine: {
+                    show: false
+                },
+                data: answerForStat.map((data, index) => ({
+                    value: data,
+                    name: optionContentList[index]
+                })),
+            }
+        ]
+    };
+
+    myChart.setOption(option);
+
+} ;
+
+const showPieChart = async (div1Id, buttonId, id) => {
+    await fetchAnswerStat(id);
+    $(`#${div1Id}`).html('');
+    $(`#${div1Id}`).append(`
+        <div id="${id}" style="width: 500px;height: 400px;"></div>
+    `);
+    const myChart = echarts.init(document.getElementById(id));
+    const option = {
+        tooltip: {
+            trigger: 'item'
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left'
+        },
+        series: [
+            {
+                name: 'Data',
+                type: 'pie',
+                radius: '50%',
+                data: answerForStat.map((data, index) => ({
+                    value: data,
+                    name: optionContentList[index]
+                })),
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+
+    myChart.setOption(option);
+};
+
+
 const showBarChart = async (div1Id, buttonId, id) => {
     await fetchAnswerStat(id);
+    $(`#${div1Id}`).html('');
     $(`#${div1Id}`).append(`
         <div id="${id}" style="width: 500px;height:400px;"></div>
     `);
@@ -211,7 +340,7 @@ const fetchTableInfo =(questionId, tbodyId, buttonId) =>{
                     dataType: 'json',
                     contentType: 'application/json',
                     success(answerRes){
-                        const ratio = (answerRes.data / ASForStat[0]) * 100;
+                        const ratio = ((answerRes.data / ASForStat[0]) * 100).toFixed(2);
                         $(`#${tbodyId}`).append(`
 
                           <tr>
@@ -279,6 +408,7 @@ const showSame = async (div1Id, tableId, tbodyId, buttonId, id) => {
 
 }
 const showTable = (div1Id, tableId, tbodyId, buttonId, id) =>{
+    $(`#${div1Id}`).html('');
     $(`#${div1Id}`).append(`
                           <table class="table table-bordered table-striped" id="${tableId}">
                       <colgroup>
@@ -324,7 +454,7 @@ const fetchTableForSame = async (questionId, tbodyId, buttonId) => {
             dataType: 'json',
             contentType: 'application/json',
         });
-
+        //获取问题的题目内容
         const questionContent = questionListResponse.data[0].questionContent;
 
         const questionContentParams = {
@@ -338,30 +468,36 @@ const fetchTableForSame = async (questionId, tbodyId, buttonId) => {
             dataType: 'json',
             contentType: 'application/json',
         });
-
+        //获取有相同问题内容的题目
         const questions = questionContentResponse.data;
 
-        const optionCon = [];
-        const answerSt = [];
+        const optionCon = [];   //
+        const answerSt = [];    //
 
         let flag = 0;
-        for (let i = 0; i < questions.length; i++) {
+
+        //获取选项列表
+        const optionParams = {
+            questionId: questionId,
+        };
+
+        const optionResponse = await $.ajax({
+            url: API_BASE_URL + '/queryOptionList',
+            type: 'POST',
+            data: JSON.stringify(optionParams),
+            dataType: 'json',
+            contentType: 'application/json',
+        });
+
+        const optionList = optionResponse.data;
+        console.log(optionList)
+
+
+        for (let i = 0; i < questions.length; i++) {   //对有相同题目内容的问题循环
             const questionItem = questions[i];
-            const optionParams = {
-                questionId: questionItem.id,
-            };
+            //获取这个问题的选项列表
 
-            const optionResponse = await $.ajax({
-                url: API_BASE_URL + '/queryOptionList',
-                type: 'POST',
-                data: JSON.stringify(optionParams),
-                dataType: 'json',
-                contentType: 'application/json',
-            });
-
-            const optionList = optionResponse.data;
-
-            optionList.forEach((optionItem, index) => {
+            optionList.forEach((optionItem, index) => {  //对每个选项
                 const answerParams = {
                     answer: optionItem.optionContent,
                     questionId: questionItem.id,
@@ -383,48 +519,60 @@ const fetchTableForSame = async (questionId, tbodyId, buttonId) => {
                             answerSt[optionConIndex] += answerRes.data;
 
                         }
+                        console.log(answerSt);
+
+                        console.log(optionCon.length+"len")
+
+                        if(i === questions.length-1 && index === optionList.length -1){
+                            console.log(i);
+                            console.log(optionCon.length+"lenjinru")
+                            for (let i = 0; i < answerSt.length; i++) {
+                                const optionConItem = optionCon[i];
+                                const answerStItem = answerSt[i];
+
+                                console.log("answerStItem:"+answerStItem);
+                                /*console.log(answerSt);*/
+                                console.log("打印")
+                                $(`#${tbodyId}`).append(`
+                                <tr>
+                                  <td>${optionConItem}</td>
+                                  <td>${answerStItem}</td>
+                                  <td id="td">
+                                    <p>
+                                      <style>
+                                        meter {
+                                          width: 300px; /* 设置进度条的宽度 */
+                                          height: 20px;
+                                        }
+                                        meter::-webkit-meter-optimum-value,
+                                        meter::-webkit-meter-suboptimum-value,
+                                        meter::-webkit-meter-even-less-good-value {
+                                          background: #0066ff; /* 设置进度条的优化值、次优化值和更差值的颜色 */
+                                        }
+                                      </style>
+                                      <meter min="0" max="${ASForStat[0]}" value="${answerStItem}"></meter>
+                                      <span> ratio % </span>
+                                    </p>
+                                  </td>
+                                </tr>
+                              `);
+
+                            }
+
+
+                        }
+
                     },
                 });
             });
 
-            if(i === questions.length -1){
-                flag = 1;
-            }
+
         }
 
         $(`#${tbodyId}`).html('');
-      if(flag === 1){
-          for (let i = 0; i < optionCon.length; i++) {
-              const optionConItem = optionCon[i];
-              const answerStItem = answerSt[i];
 
-              console.log(answerStItem);
-              console.log(answerSt);
-              $(`#${tbodyId}`).append(`
-        <tr>
-          <td>${optionConItem}</td>
-          <td>${answerStItem}</td>
-          <td id="td">
-            <p>
-              <style>
-                meter {
-                  width: 300px; /* 设置进度条的宽度 */
-                  height: 20px;
-                }
-                meter::-webkit-meter-optimum-value,
-                meter::-webkit-meter-suboptimum-value,
-                meter::-webkit-meter-even-less-good-value {
-                  background: #0066ff; /* 设置进度条的优化值、次优化值和更差值的颜色 */
-                }
-              </style>
-              <meter min="0" max="${ASForStat[0]}" value="${answerStItem}"></meter>
-              <span> ratio % </span>
-            </p>
-          </td>
-        </tr>
-      `);
-          }
-      }
+
+
 
     } catch (error) {
         console.error(error);

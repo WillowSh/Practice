@@ -39,8 +39,7 @@ public class QNRService {
 
     public int deleteQNRById(QNREntity qnrEntity){
         qnrEntity.setIsDeleted("Deleted");
-        int qnrResult=qnrEntityMapper.deleteQNRById(qnrEntity);
-        return qnrResult;
+        return qnrEntityMapper.deleteQNRById(qnrEntity);
 
     }
 
