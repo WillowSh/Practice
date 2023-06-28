@@ -1,8 +1,8 @@
 package com.example.startpractice.controller;
 
 import com.example.startpractice.beans.HttpResponseEntity;
+import com.example.startpractice.dao.entity.ProjectEntity;
 import com.example.startpractice.dao.entity.QNREntity;
-import com.example.startpractice.dao.entity.UserEntity;
 import com.example.startpractice.service.QNRService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
@@ -84,7 +84,7 @@ public class QNRController {
 
 
     @RequestMapping(value = "/deleteQNRById",method = RequestMethod.POST,headers = "Accept=application/json")
-    public HttpResponseEntity deleteUserById(@RequestBody QNREntity qnrEntity){
+    public HttpResponseEntity deleteQNRById(@RequestBody QNREntity qnrEntity){
 
         System.out.println(qnrEntity);
         HttpResponseEntity httpResponseEntity=new HttpResponseEntity();
@@ -107,5 +107,22 @@ public class QNRController {
         return httpResponseEntity;
     }
 
+    @PostMapping(value = "/modifyQNRInfo",headers = "Accept=application/json")
+    public HttpResponseEntity modifyQNRInfo(@RequestBody QNREntity qnrEntity){
+        HttpResponseEntity httpResponseEntity=new HttpResponseEntity();
 
+        int result=qnrService.modifyQNRInfo(qnrEntity);
+        if(result!=0){
+            httpResponseEntity.setCode("666");
+            httpResponseEntity.setData(result);
+            httpResponseEntity.setMessage("修改成功");
+        }else {
+            httpResponseEntity.setCode("0");
+            httpResponseEntity.setData(0);
+            httpResponseEntity.setMessage("修改失败");
+        }
+
+
+        return httpResponseEntity;
+    }
 }

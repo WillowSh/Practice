@@ -1,10 +1,12 @@
+/*import {getItem} from "../../utils/storage";*/
+
 let questionList = [];
 let answerList=[];
 let answer=[];
 const urlParams = new URLSearchParams(window.location.search);
 let asId = urlParams.get('asId');
 const qNRId = urlParams.get('qNRId');
-
+let optionContent = [];
 onload = () => {
   let qNRName = '';
   let qNRContent='';
@@ -20,10 +22,10 @@ onload = () => {
     dataType: "json",
     contentType: "application/json",
     success(res) {
-      qNRName=res.data[0].qNRName;
+     /* qNRName=res.data[0].qNRName;
       qNRContent=res.data[0].qNRContent;
       document.getElementById('qnrTitle').innerHTML = qNRName;
-      document.getElementById('qnrContent').innerHTML = qNRContent;
+      document.getElementById('qnrContent').innerHTML = qNRContent;*/
     }
   })
   let resParams = {
@@ -48,7 +50,7 @@ onload = () => {
 
 const fetchQuestionList = () => {
   let params = {
-    qNRId: qNRId//"QNR1687615803759t0tylsxf2"
+    qNRId: "QNR1687673721182all8ozuct"
   };
 
   $.ajax({
@@ -63,8 +65,11 @@ const fetchQuestionList = () => {
 
 
       res.data.forEach((item, index) => {
+        let content = '';
         if(item.questionType === '矩阵'){
-            item.questionContent = item.questionContent.substring(0,item.questionContent.indexOf("//leftTitle:"));
+            content = item.questionContent.substring(0,item.questionContent.indexOf("//leftTitle:"));
+        }else{
+            content = item.questionContent;
         }
         let questionHtml = `
           <div class="question" id="question${index + 1}" data-type="${item.questionType}" data-problemIndex="${index + 1}">
@@ -73,12 +78,11 @@ const fetchQuestionList = () => {
               <span class="must-answer" id="mustAnswer">必答题</span>
             </div>
             <div class="bottom">
-              <p class="question-content">${item.questionContent}</p>
+              <p class="question-content">${content}</p>
         `;
 
 
         if (item.questionType === '填空') {
-
           questionHtml += `
             <textarea class="form-control"  placeholder="请输入" id="textarea-${index}" rows="4" style="width: 70%;"></textarea>
           `;
@@ -89,7 +93,7 @@ const fetchQuestionList = () => {
           // Compare option with answer
          let answerParams = {
             questionId: item.id,
-           asId: asId,
+           asId: 1,
           };
 
           $.ajax({
@@ -122,10 +126,18 @@ const fetchQuestionList = () => {
             success(optionRes) {
               let optionHtml_1 = '';
               let optionHtml_2 = '';
+
+              console.log(optionRes.length + "长度");
+              if (item.questionType === "矩阵") {
+                matrixAnswer(questionHtml, item, optionRes.data, optionRes.length)
+              } else {
+
+
               optionRes.data.forEach((option, optionIndex) => {
                 let optionHtml = '';
 
                 if (item.questionType === '单选') {
+                  console.log("单选" + index);
                   optionHtml += `
                     <div style="display: flex; align-items: center; margin-bottom: 3px;">
                       <label class="radio-inline">
@@ -134,6 +146,7 @@ const fetchQuestionList = () => {
                     </div>
                   `;
                 } else if (item.questionType === '多选') {
+                  console.log("多选" + index);
                   optionHtml += `
                     <div style="display: flex; align-items: center; margin-bottom: 3px;">
                       <label class="checkbox-inline">
@@ -141,67 +154,37 @@ const fetchQuestionList = () => {
                       </label>
                     </div>
                   `;
-                }
-                // else if (item.questionType === '矩阵') {
-                //
-                //   optionHtml_1 += `<th>${option.optionContent}</th>\n`;
-                //
-                //   optionHtml_2 += `<td><input type="radio" name="${option.optionContent}" /></td>\n`;
-                //
-                //   if (optionIndex === optionRes.data.length-1) {
-                //     let leftContent = item.questionContent.substring(item.questionContent.indexOf(':') + 1);
-                //     optionHtml =`
-                //           <div class="bottom">
-                //             <table class="table">
-                //               <thead>
-                //                 <tr>
-                //                   <th></th>
-                //               `+optionHtml_1+
-                //                `
-                //                  </tr>
-                //               </thead>
-                //               <tbody>
-                //                 <tr>
-                //                     <td>${leftContent}</td>
-                //               `+optionHtml_2+
-                //                 `
-                //                 </tr>
-                //               </tbody>
-                //             </table>
-                //           </div>
-                //              `;
-                //   }
-                // }else{
-                //
-                //   if(optionIndex === 0){
-                //     let first = option.optionContent.substring(0,option.optionContent.indexOf("//left:"));
-                //     optionHtml_1 = `<div>${first}</div>`
-                //   }
-                //
-                //   let fraction = option.optionContent.substring(option.optionContent.indexOf(':') + 1);
-                //   console.log(option.optionContent)
-                //   optionHtml_2 +=` <div>
-                //                       <label className="radio-inline">
-                //                         <input type="radio" name="${option.optionContent}"/>${fraction}
-                //                       </label>
-                //                     </div>`;
-                //   if (optionIndex === optionRes.data.length-1) {
-                //       let last = option.optionContent.substring(0,option.optionContent.indexOf("//left:"));
-                //       optionHtml = `<div className="bottom" style="display: flex; align-items: center; justify-content: space-between;">`
-                //                    +optionHtml_1
-                //                    +optionHtml_2
-                //                    +`<div>${last}</div>`
-                //                    ;
-                //   }
-                // }
+                } else {
+                  if (optionIndex === 0) {
+                    let first = option.optionContent.substring(0, option.optionContent.indexOf("//left:"));
+                    optionHtml_1 = `<div>${first}</div>\n`
+                  }
 
-                console.log("answer:"+option.optionContent)
+                  let fraction = option.optionContent.substring(option.optionContent.indexOf(':') + 1);
+                  optionHtml_2 += ` <div>
+                                      <label className="radio-inline">
+                                        <input type="radio" name="${option.optionContent}" id="option-${index}" value="${optionIndex}"/>${fraction}
+                                      </label>
+                                    </div>`;
+                  if (optionIndex === optionRes.data.length - 1) {
+                    let last = option.optionContent.substring(0, option.optionContent.indexOf("//left:"));
+                    optionHtml = `<div className="bottom" style="display: flex; align-items: center; justify-content: space-between;">\n`
+                        + optionHtml_1
+                        + optionHtml_2
+                        + `<div>${last}</div>`
+                    ;
+
+                  }
+
+                }
                 // Compare option with answer
+
                 let answerParams = {
                   questionId: item.id,
-                  asId: asId,
+                  asId: 1,
                   answer: option.optionContent
                 };
+
 
                 $.ajax({
                   url: API_BASE_URL + '/queryAnswerList',
@@ -212,19 +195,19 @@ const fetchQuestionList = () => {
                   success(answerRes) {
                     if (answerRes.code === '666') {
                       // Set selected state for radio or checkbox
-                     /* const elementId = `#question${index + 1} [value="${optionIndex}"]`;
-                      $(elementId).prop('checked', true);*/
+                      /* const elementId = `#question${index + 1} [value="${optionIndex}"]`;
+                       $(elementId).prop('checked', true);*/
                       // 假设 optionContent 是选项的内容，例如 "适合"、"有点适合"、"不太适合"
-                      let choose_type = "";
-                        // 获取具有指定名称和值的复选框元素
-                      // if(item.questionType === '多选'){
-                      //   choose_type = "checkbox"
-                      // }else{
-                      //   choose_type = "radio"
-                      // }
 
-                      const chooseTerm = document.querySelector(`#option-${index}[value="${optionIndex}"]`);
-                       // 将复选框设置为选中状态
+                      /* const chooseTerm = document.querySelector(`[#option-${index}]`);*/
+                      let chooseTerm = '';
+
+                      if (item.questionType !== "矩阵") {
+                        chooseTerm = document.querySelector(`#option-${index}[value="${optionIndex}"]`);
+                      } else {
+                        chooseTerm = document.querySelector(`[value=${option.optionContent}]`);
+                      }
+                      // 将复选框设置为选中状态
                       chooseTerm.checked = true;
 
 
@@ -235,17 +218,98 @@ const fetchQuestionList = () => {
                 questionHtml += optionHtml;
               });
 
-                questionHtml += `
+              questionHtml += `
                   </div>
                 </div>
                 `;
-                $('#problem').append(questionHtml);
+              $('#problem').append(questionHtml);
+                 }
               }
-
            });
+
         }
 
       });
     }
   });
 };
+
+
+const matrixAnswer = (questionHtml,item,optionRes,optionIndex) => {
+
+  /*optionHtml_1 += `<th>${option.optionContent}</th>\n`;*/
+
+  /* optionHtml_2 += `<td><input type="radio" class="${option.optionContent}"/></td>\n`;*/
+  /*optionContent[optionIndex] = option.optionContent;*/
+
+    let leftContent = item.questionContent.substring(item.questionContent.indexOf(':') + 1);
+    const matrixArray = leftContent.split(',');
+    let optionHtml =``;
+    let optionHtml_1 = ``;
+    let optionHtml_3 = '';
+    for (let i = 0; i < matrixArray.length; i++) {
+      console.log(matrixArray[i]);
+      let optionHtml_2 = ``;
+
+      for (let j = 0; j < optionRes.length; j++) {
+        if ( i=== 0) {
+          optionHtml_1 += `<th>${optionRes[j].optionContent}</th>\n`;
+        }
+
+        let value = optionRes[j].optionContent + "//left:" + matrixArray[i];
+        console.log(value);
+        optionHtml_2 += `<td><input type="radio" value="${value}"/></td>\n`;
+
+        let answerParams = {
+          questionId: item.id,
+          asId: 1,
+          answer:value
+        };
+
+        $.ajax({
+          url: API_BASE_URL + '/queryAnswerList',
+          type: 'POST',
+          data: JSON.stringify(answerParams),
+          dataType: 'json',
+          contentType: 'application/json',
+          success(answerRes) {
+            if (answerRes.code === '666') {
+              const  chooseTerm = document.querySelector(`[value="${value}"]`);
+
+              chooseTerm.checked = true;
+            }
+          }
+        });
+      }
+      optionHtml_3 += `<tr>
+                       <td>${matrixArray[i]}</td>\n`
+                      + optionHtml_2
+                      + `</tr>`;
+
+    }
+
+        optionHtml = `
+                        <div class="bottom">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th></th>
+                            ` + optionHtml_1 + `
+                               </tr>
+                            </thead>
+                            <tbody>
+                            ` + optionHtml_3 +
+      ` 
+                            </tbody>
+                          </table>
+                        </div>
+                           `;
+        questionHtml += optionHtml;
+        questionHtml += `
+                          </div>
+                        </div>
+                        `;
+        console.log(questionHtml)
+        $('#problem').append(questionHtml);
+
+}

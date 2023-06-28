@@ -17,4 +17,6 @@ public interface QNREntityMapper {
     List<QNREntity> queryQNR(QNREntity qnrEntity);
 
     int deleteQNRById(QNREntity qnrEntity);
+
+    int modifyQNRInfo(QNREntity qnrEntity);
 }
