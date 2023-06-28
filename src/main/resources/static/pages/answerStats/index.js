@@ -46,14 +46,13 @@ const fetchQuestionListStat = () =>{
         dataType: 'json',
         contentType: 'application/json',
         success(res) {
-            ASForStat[0]+=res.data;
+            ASForStat[0]=res.data;
         }
     })
 }
 
 
 const fetchQuestionList = () => {
-
     let params = {
         qNRId: qNRId
     };
@@ -89,9 +88,10 @@ const fetchQuestionList = () => {
 
                    <div id="${div1Id}">
                     
+                    
+                    </div>
                     <div class="buttons" id="${buttonId}">
                       </div>
-                    </div>
                   `)
                 setOriginalInfo(questionId, tbodyId, buttonId, div1Id, tableId);
             });
@@ -156,12 +156,137 @@ const fetchAnswerStat = async (questionId) => {
 const setOriginalInfo = (questionId, tbodyId, buttonId, div1Id, tableId) =>{
     $(`#${buttonId}`).append(`
                          <button onclick="showTable('${div1Id}','${tableId}','${tbodyId}','${buttonId}','${questionId}')">表格</button>
-                         <button onclick="showPieChart('${questionId}')">饼状</button>
+                         <button onclick="showPieChart('${div1Id}','${buttonId}','${questionId}')">饼状</button>
                          <button onclick="showBarChart('${div1Id}','${buttonId}','${questionId}')">柱状</button>
+                         <button onclick="showDonutChart('${div1Id}','${buttonId}','${questionId}')">环形</button>
+                         <button onclick="showLineChart('${div1Id}','${buttonId}','${questionId}')">折线</button>
                         `)
 }
+const showLineChart = async (div1Id, buttonId, id) => {
+
+    await fetchAnswerStat(id);
+    $(`#${div1Id}`).html('');
+    $(`#${div1Id}`).append(`
+        <div id="${id}" style="width: 500px;height: 400px;"></div>
+    `);
+    const myChart = echarts.init(document.getElementById(id));
+    const option = {
+        title: {
+            text: 'Line Chart',
+            left: 'center'
+        },
+        xAxis: {
+            type: 'category',
+            data: optionContentList
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [
+            {
+                name: 'Data',
+                type: 'line',
+                data: answerForStat
+            }
+        ]
+    };
+    myChart.setOption(option);
+
+}
+const showDonutChart= async (div1Id, buttonId, id) => {
+    await fetchAnswerStat(id);
+    $(`#${div1Id}`).html('');
+    $(`#${div1Id}`).append(`
+        <div id="${id}" style="width: 500px;height: 400px;"></div>
+    `);
+    const myChart = echarts.init(document.getElementById(id));
+    const option = {
+        tooltip: {
+            trigger: 'item'
+        },
+        legend: {
+            top: '5%',
+            left: 'center'
+        },
+        series: [
+            {
+                name: 'Access From',
+                type: 'pie',
+                radius: ['40%', '70%'],
+                avoidLabelOverlap: false,
+                itemStyle: {
+                    borderRadius: 10,
+                    borderColor: '#fff',
+                    borderWidth: 2
+                },
+                label: {
+                    show: false,
+                    position: 'center'
+                },
+                emphasis: {
+                    label: {
+                        show: true,
+                        fontSize: 40,
+                        fontWeight: 'bold'
+                    }
+                },
+                labelLine: {
+                    show: false
+                },
+                data: answerForStat.map((data, index) => ({
+                    value: data,
+                    name: optionContentList[index]
+                })),
+            }
+        ]
+    };
+
+    myChart.setOption(option);
+
+} ;
+
+const showPieChart = async (div1Id, buttonId, id) => {
+    await fetchAnswerStat(id);
+    $(`#${div1Id}`).html('');
+    $(`#${div1Id}`).append(`
+        <div id="${id}" style="width: 500px;height: 400px;"></div>
+    `);
+    const myChart = echarts.init(document.getElementById(id));
+    const option = {
+        tooltip: {
+            trigger: 'item'
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left'
+        },
+        series: [
+            {
+                name: 'Data',
+                type: 'pie',
+                radius: '50%',
+                data: answerForStat.map((data, index) => ({
+                    value: data,
+                    name: optionContentList[index]
+                })),
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+
+    myChart.setOption(option);
+};
+
+
 const showBarChart = async (div1Id, buttonId, id) => {
     await fetchAnswerStat(id);
+    $(`#${div1Id}`).html('');
     $(`#${div1Id}`).append(`
         <div id="${id}" style="width: 500px;height:400px;"></div>
     `);
@@ -215,7 +340,7 @@ const fetchTableInfo =(questionId, tbodyId, buttonId) =>{
                     dataType: 'json',
                     contentType: 'application/json',
                     success(answerRes){
-                        const ratio = (answerRes.data / ASForStat[0]) * 100;
+                        const ratio = ((answerRes.data / ASForStat[0]) * 100).toFixed(2);
                         $(`#${tbodyId}`).append(`
 
                           <tr>
@@ -283,6 +408,7 @@ const showSame = async (div1Id, tableId, tbodyId, buttonId, id) => {
 
 }
 const showTable = (div1Id, tableId, tbodyId, buttonId, id) =>{
+    $(`#${div1Id}`).html('');
     $(`#${div1Id}`).append(`
                           <table class="table table-bordered table-striped" id="${tableId}">
                       <colgroup>
@@ -425,7 +551,7 @@ const fetchTableForSame = async (questionId, tbodyId, buttonId) => {
                                         }
                                       </style>
                                       <meter min="0" max="${ASForStat[0]}" value="${answerStItem}"></meter>
-                      <!--                <span> ratio % </span>  -->
+                                      <span> ratio % </span>
                                     </p>
                                   </td>
                                 </tr>
