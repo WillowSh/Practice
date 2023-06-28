@@ -43,9 +43,13 @@ const fetchQuestionList = () => {
 
 
       res.data.forEach((item, index) => {
+        let content ='';
         if(item.questionType === '矩阵'){
-          item.questionContent = item.questionContent.substring(0,item.questionContent.indexOf("//leftTitle:"));
+          content = item.questionContent.substring(0,item.questionContent.indexOf("//leftTitle:"));
+        }else{
+          content = item.questionContent;
         }
+
         let questionHtml = `
           <div class="question" id="question${index + 1}" data-type="${item.questionType}" data-problemIndex="${index + 1}">
             <div class="top">
@@ -53,7 +57,7 @@ const fetchQuestionList = () => {
               <span class="must-answer" id="mustAnswer">必答题</span>
             </div>
             <div class="bottom">
-              <p class="question-content">${item.questionContent}</p>
+              <p class="question-content">${content}</p>
         `;
 
 
@@ -81,7 +85,7 @@ const fetchQuestionList = () => {
               let optionHtml_1 = '';
               let optionHtml_2 = '';
               if (item.questionType === "矩阵") {
-                matrixAnswer(questionHtml, item, optionRes.data, optionRes.length)
+                matrixShow(questionHtml, item, optionRes.data)
               } else {
                 optionRes.data.forEach((option, optionIndex) => {
                   let optionHtml = '';
