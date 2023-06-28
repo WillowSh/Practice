@@ -14,7 +14,16 @@
     <select id="queryAnswerSheetList" parameterType="java.lang.String" resultType="com.example.startpractice.dao.entity.AnswerSheetEntity">
         SELECT id , respondent, qnr_id as "qNRId", answer_date as "answerDate"
         FROM as_info
-        WHERE qnr_id= #{qNRId,jdbcType=VARCHAR}
+        <where>
+            <choose>
+                <when test="respondent !=null and respondent != ''">
+                    respondent = #{respondent,jdbcType=VARCHAR} AND qnr_id= #{qNRId,jdbcType=VARCHAR}
+                </when >
+                <otherwise>
+                    qnr_id= #{qNRId,jdbcType=VARCHAR}
+                </otherwise>
+            </choose>
+        </where>
     </select>
 
     <select id="queryAnswerSheet" parameterType="java.lang.String" resultType="com.example.startpractice.dao.entity.AnswerSheetEntity">

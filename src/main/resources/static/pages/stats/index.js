@@ -10,10 +10,11 @@ let qnrList = [];
 let answerSheetList = [];
 let qnrName=[];
 
-
 const fetchQNRList = () => {
+
     let qnrParams = {
-        projectId: projectId
+        projectId: projectId,
+
     };
 
     $.ajax({
@@ -34,8 +35,10 @@ const fetchQNRList = () => {
 };
 
 const fetchAnswerSheetList = (qnrId,qnrName) => {
+    let value = $('#respondentName').val()
     let params = {
         qNRId: qnrId,
+        respondent: value
     };
     console.log("!!!"+JSON.stringify(params));
 
@@ -46,8 +49,12 @@ const fetchAnswerSheetList = (qnrId,qnrName) => {
         dataType: 'json',
         contentType: 'application/json',
         success(res) {
-            res.data.forEach((item, index) => {
-                $('#table #tbody').append(`
+ /*           if(res.data === null && value !== ""){
+                alert("该答卷人不存在")
+            }*/
+             if(res.data !== null){
+                res.data.forEach((item, index) => {
+                    $('#table #tbody').append(`
                     <tr>
                         <td>${qnrName}</td>
                         <td>${item.respondent}</td>
@@ -57,7 +64,9 @@ const fetchAnswerSheetList = (qnrId,qnrName) => {
                         </td>
                     </tr>
                 `);
-            });
+                });
+            }
+
         }
     });
 };

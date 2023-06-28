@@ -62,4 +62,12 @@
         where id = #{id,jdbcType=VARCHAR} AND end_date &lt; #{endDate,jdbcType=TIMESTAMP}
     </delete>
 
+    <update id="modifyQNRInfo" parameterType="com.example.startpractice.dao.entity.QNREntity">
+
+        update qNR_info set id = #{id,jdbcType=VARCHAR},
+                            qnr_name = #{qNRName,jdbcType=VARCHAR},
+                            qnr_content = #{qNRContent,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+
 </mapper>
